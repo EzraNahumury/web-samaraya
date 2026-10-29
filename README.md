@@ -1,6 +1,6 @@
 # Redesign Website Samaraya dengan Next.js
 
-> Dokumentasi awal perencanaan redesign [samaraya.id](https://samaraya.id/) dari WordPress ke Next.js.
+> Dokumentasi awal perencanaan redesign [samaraya.id](https://samaraya.id/) 
 > Struktur dan fitur di sini masih berupa rancangan dan perlu divalidasi melalui audit website serta diskusi dengan pemilik bisnis.
 
 ## Daftar Isi
