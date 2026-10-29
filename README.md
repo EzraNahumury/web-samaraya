@@ -25,7 +25,7 @@
 
 ## 1. Latar Belakang
 
-Website [Samaraya](https://samaraya.id/) akan dirancang ulang menggunakan Next.js. Website yang saat ini digunakan diduga masih memakai WordPress, sehingga perlu dilakukan analisis terlebih dahulu terhadap struktur website, halaman, konten, katalog produk, dan alur pengguna sebelum proses implementasi dimulai.
+Website [Samaraya](https://samaraya.id/) akan dirancang ulang menggunakan Next.js.
 
 Redesign ini tidak hanya bertujuan memperbarui tampilan, tetapi juga menyusun struktur website yang lebih terorganisasi, modern, responsif, mudah dikembangkan, dan sesuai dengan kebutuhan bisnis Samaraya.
 
