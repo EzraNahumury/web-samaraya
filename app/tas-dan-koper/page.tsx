@@ -5,7 +5,7 @@ import { Reveal } from "@/components/Reveal";
 import { Media } from "@/components/Media";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
-import { ProductCard } from "@/components/ProductCard";
+import { ProductShowcase } from "@/components/ProductShowcase";
 import { ProcessSteps } from "@/components/ProcessSteps";
 import { FaqList } from "@/components/FaqList";
 import { CtaBand } from "@/components/CtaBand";
@@ -68,15 +68,11 @@ export default function TasDanKoperPage() {
           <SectionHeading
             eyebrow="Produk Unggulan"
             title="Beberapa model yang sering dipesan."
-            description="Setiap model dapat disesuaikan. Ketuk produk untuk minta penawaran via WhatsApp."
+            description="Pilih model untuk melihat detail. Ketuk “Minta penawaran” untuk konsultasi via WhatsApp."
           />
-          <div className="mt-12 grid grid-cols-2 gap-5 md:grid-cols-3">
-            {tasUnggulan.map((p, i) => (
-              <Reveal key={p.nama} delay={(i % 3) * 80}>
-                <ProductCard produk={p} context="Tas & Koper" />
-              </Reveal>
-            ))}
-          </div>
+          <Reveal className="mt-12">
+            <ProductShowcase produk={tasUnggulan} context="Tas & Koper" />
+          </Reveal>
         </Container>
       </section>
 

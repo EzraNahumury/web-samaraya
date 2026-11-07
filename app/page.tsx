@@ -9,7 +9,7 @@ import { CategoryCard } from "@/components/CategoryCard";
 import { FeatureGrid } from "@/components/FeatureGrid";
 import { ProcessSteps } from "@/components/ProcessSteps";
 import { FaqList } from "@/components/FaqList";
-import { CtaBand } from "@/components/CtaBand";
+import { OrbCta } from "@/components/OrbCta";
 import { WhatsappIcon } from "@/components/icons";
 import { waLink, waMessage } from "@/lib/site";
 import {
@@ -303,7 +303,7 @@ export default function Home() {
         </Container>
       </section>
 
-      <CtaBand />
+      <OrbCta />
     </>
   );
 }
