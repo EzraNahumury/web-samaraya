@@ -5,10 +5,13 @@ import { Reveal } from "@/components/Reveal";
 import { Media } from "@/components/Media";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
-import { ProductShowcase } from "@/components/ProductShowcase";
+import { ProductOrb } from "@/components/ProductOrb";
+import { Button } from "@/components/Button";
 import { ProcessSteps } from "@/components/ProcessSteps";
 import { FaqList } from "@/components/FaqList";
 import { CtaBand } from "@/components/CtaBand";
+import { WhatsappIcon } from "@/components/icons";
+import { waLink, waMessage } from "@/lib/site";
 import { tasUnggulan, prosesPemesanan, faqUmum } from "@/lib/catalog";
 
 export const metadata: Metadata = {
@@ -68,10 +71,23 @@ export default function TasDanKoperPage() {
           <SectionHeading
             eyebrow="Produk Unggulan"
             title="Beberapa model yang sering dipesan."
-            description="Pilih model untuk melihat detail. Ketuk “Minta penawaran” untuk konsultasi via WhatsApp."
+            description="Geser galeri untuk menjelajah model. Semua dapat dikustomisasi — minta penawaran untuk detail."
           />
           <Reveal className="mt-12">
-            <ProductShowcase produk={tasUnggulan} context="Tas & Koper" />
+            <div className="noise relative overflow-hidden rounded-3xl bg-ink px-4 py-10 md:py-14">
+              <ProductOrb images={tasUnggulan} />
+              <div className="mt-6 flex justify-center">
+                <Button
+                  href={waLink(waMessage("produk tas & koper custom"))}
+                  external
+                  variant="accent"
+                  size="lg"
+                >
+                  <WhatsappIcon className="h-5 w-5" />
+                  Minta Penawaran
+                </Button>
+              </div>
+            </div>
           </Reveal>
         </Container>
       </section>
