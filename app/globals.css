@@ -1,26 +1,281 @@
 @import "tailwindcss";
 
+/* ============================================================
+   Samaraya — Design System
+   Palet: navy (brand) + hijau (aksen) di atas kertas hangat.
+   Satu tema art-directed (light). Tipografi: Fraunces (display)
+   + Hanken Grotesk (teks/UI).
+   ============================================================ */
+
+@theme {
+  /* Warna */
+  --color-ink: #0e1a2b; /* teks utama & section gelap */
+  --color-ink-soft: #46586d; /* teks sekunder */
+  --color-navy: #102a4c; /* brand navy */
+  --color-navy-600: #17365f;
+  --color-navy-900: #0a1b31;
+  --color-paper: #f6f5f0; /* latar halaman */
+  --color-paper-2: #edece4; /* kartu / section alternatif */
+  --color-cream: #fbfaf5;
+  --color-line: #e2e0d6; /* garis hairline */
+  --color-line-dark: #223a5a; /* garis di atas navy */
+  --color-green: #5f9e21; /* aksen hijau brand */
+  --color-green-600: #4f8a1b;
+  --color-green-deep: #3c6a14; /* hijau untuk teks di atas terang */
+  --color-on-dark: #e9ecf1;
+  --color-on-dark-soft: #9cabbd;
+
+  /* Tipografi */
+  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+
+  /* Radius & bentuk */
+  --radius-sm: 0.375rem;
+  --radius: 0.75rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+
+  /* Layout */
+  --spacing-gutter: 1.25rem;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --shell-max: 1240px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  border-color: var(--color-line);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-green);
+  color: #fff;
+}
+
+/* Fokus keyboard yang jelas & konsisten (aksesibilitas) */
+:focus-visible {
+  outline: 2px solid var(--color-green);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* ---------- Tipografi dasar ---------- */
+.font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  letter-spacing: -0.015em;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+  font-weight: 500;
+}
+
+.display-xl {
+  font-size: clamp(2.6rem, 6.2vw, 5.1rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+}
+
+.display-lg {
+  font-size: clamp(2.1rem, 4.6vw, 3.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+}
+
+.display-md {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+
+/* Eyebrow / label kecil berkarakter */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* ---------- Layout ---------- */
+.shell {
+  width: 100%;
+  max-width: var(--shell-max);
+  margin-inline: auto;
+  padding-inline: var(--spacing-gutter);
+}
+@media (min-width: 768px) {
+  .shell {
+    padding-inline: 2rem;
+  }
+}
+
+/* ---------- Aksen dekoratif ---------- */
+/* Garis bawah "marker" hijau pada kata kunci heading */
+.mark {
+  position: relative;
+  white-space: nowrap;
+}
+.mark::after {
+  content: "";
+  position: absolute;
+  left: -0.05em;
+  right: -0.05em;
+  bottom: 0.08em;
+  height: 0.34em;
+  background: color-mix(in srgb, var(--color-green) 42%, transparent);
+  z-index: -1;
+  border-radius: 2px;
+}
+
+/* Titik aksen brand (echo mark logo) */
+.brand-dot {
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 999px;
+  background: var(--color-green);
+}
+
+/* ---------- Reveal on scroll ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.reveal[data-variant="left"] {
+  transform: translateX(-26px);
+}
+.reveal[data-variant="right"] {
+  transform: translateX(26px);
+}
+.reveal[data-variant="scale"] {
+  transform: scale(1.04);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Marquee ---------- */
+.marquee-track {
+  display: inline-flex;
+  gap: 2.5rem;
+  white-space: nowrap;
+  animation: marquee 34s linear infinite;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- Image reveal / hover ---------- */
+.img-zoom {
+  transition: transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.group:hover .img-zoom {
+  transform: scale(1.055);
+}
+
+/* Fade-in gambar setelah dimuat */
+.media-fade {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.media-fade[data-loaded="true"] {
+  opacity: 1;
+}
+
+/* ---------- Accordion (FAQ) ---------- */
+.accordion-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.accordion-panel[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+.accordion-panel > div {
+  overflow: hidden;
+}
+
+/* ---------- Link underline animasi ---------- */
+.link-underline {
+  background-image: linear-gradient(var(--color-green), var(--color-green));
+  background-size: 0% 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.link-underline:hover {
+  background-size: 100% 2px;
+}
+
+/* ---------- Grain/tekstur halus untuk section navy ---------- */
+.noise {
+  position: relative;
+}
+.noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(255, 255, 255, 0.04) 1px,
+    transparent 0
+  );
+  background-size: 22px 22px;
+  pointer-events: none;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .marquee-track {
+    animation: none;
+  }
+  .img-zoom,
+  .media-fade {
+    transition: none;
+  }
+  .media-fade {
+    opacity: 1;
+  }
 }
