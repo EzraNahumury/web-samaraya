@@ -1,14 +1,9 @@
 import type { Metadata } from "next";
-import { Container } from "@/components/Container";
-import { Reveal } from "@/components/Reveal";
-import { QuoteForm } from "@/components/QuoteForm";
+import { PageHeroText, Shell } from "@/components/site/ui";
+import { QuoteFormDark } from "@/components/site/QuoteFormDark";
+import { Reveal } from "@/components/landing/motion";
+import { InstagramIcon, MailIcon, PinIcon, WhatsappIcon } from "@/components/icons";
 import { site, waLink, waMessage } from "@/lib/site";
-import {
-  WhatsappIcon,
-  MailIcon,
-  InstagramIcon,
-  PinIcon,
-} from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "Kontak",
@@ -39,88 +34,73 @@ const kontak = [
     external: true,
     Icon: InstagramIcon,
   },
-  {
-    label: "Lokasi",
-    value: site.address,
-    href: null,
-    external: false,
-    Icon: PinIcon,
-  },
+  { label: "Lokasi", value: site.address, href: null, external: false, Icon: PinIcon },
 ];
 
 export default function KontakPage() {
   return (
-    <section className="py-12 md:py-16">
-      <Container>
-        <div className="max-w-2xl">
-          <Reveal as="p" className="eyebrow mb-5 flex items-center gap-2.5 text-green-deep">
-            <span className="brand-dot" /> Kontak
-          </Reveal>
-          <Reveal as="h1" delay={60} className="display-xl">
-            Mari mulai pesanan Anda.
-          </Reveal>
-          <Reveal as="p" delay={120} className="mt-6 text-lg leading-8 text-ink-soft">
-            Punya pertanyaan atau ingin minta penawaran? Hubungi kami lewat kanal
-            berikut, atau isi formulir di bawah. Konsultasi gratis.
-          </Reveal>
-        </div>
+    <>
+      <PageHeroText
+        breadcrumb="Kontak"
+        eyebrow="Kontak"
+        title="Mari mulai pesanan Anda."
+        desc="Punya pertanyaan atau ingin minta penawaran? Hubungi kami lewat kanal berikut, atau isi formulir di bawah. Konsultasi gratis."
+      />
 
-        <div className="mt-14 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-          {/* Kanal kontak */}
-          <div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {kontak.map((k, i) => {
-                const inner = (
-                  <div className="flex h-full items-start gap-4 rounded-2xl border border-line bg-cream p-5 transition-colors hover:border-green/50">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ink text-green">
-                      <k.Icon className="h-5 w-5" />
-                    </span>
-                    <div>
-                      <p className="text-sm font-medium text-ink-soft">{k.label}</p>
-                      <p className="mt-1 font-medium text-ink">{k.value}</p>
+      <section className="pb-20 md:pb-28">
+        <Shell>
+          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+            {/* Kanal kontak */}
+            <div>
+              <Reveal className="grid gap-4 sm:grid-cols-2">
+                {kontak.map((k) => {
+                  const inner = (
+                    <div className="flex h-full items-start gap-4 rounded-card border border-white/[.08] bg-card-grad p-5 transition-colors hover:border-green/40">
+                      <span className="grid size-11 shrink-0 place-items-center rounded-full bg-green/15 text-green">
+                        <k.Icon className="h-5 w-5" />
+                      </span>
+                      <div>
+                        <p className="text-[13px] text-muted">{k.label}</p>
+                        <p className="mt-1 text-[15px] text-fg">{k.value}</p>
+                      </div>
                     </div>
-                  </div>
-                );
-                return (
-                  <Reveal key={k.label} delay={i * 70}>
-                    {k.href ? (
-                      <a
-                        href={k.href}
-                        target={k.external ? "_blank" : undefined}
-                        rel={k.external ? "noopener noreferrer" : undefined}
-                        className="block h-full"
-                      >
-                        {inner}
-                      </a>
-                    ) : (
-                      inner
-                    )}
-                  </Reveal>
-                );
-              })}
+                  );
+                  return k.href ? (
+                    <a
+                      key={k.label}
+                      href={k.href}
+                      target={k.external ? "_blank" : undefined}
+                      rel={k.external ? "noopener noreferrer" : undefined}
+                      className="block h-full"
+                    >
+                      {inner}
+                    </a>
+                  ) : (
+                    <div key={k.label}>{inner}</div>
+                  );
+                })}
+              </Reveal>
+
+              <Reveal className="mt-4 rounded-card border border-white/[.08] bg-card-grad p-6">
+                <p className="text-[17px] text-fg">Jam operasional</p>
+                <p className="mt-2 text-[14px] text-muted leading-7">
+                  Senin–Sabtu. Pesan yang masuk di luar jam kerja akan kami balas pada hari kerja
+                  berikutnya.
+                </p>
+              </Reveal>
             </div>
 
-            <Reveal delay={180} className="mt-6 rounded-2xl bg-ink p-6 text-on-dark">
-              <p className="font-display text-lg">Jam operasional</p>
-              <p className="mt-2 text-sm leading-7 text-on-dark-soft">
-                Senin–Sabtu. Pesan yang masuk di luar jam kerja akan kami balas
-                pada hari kerja berikutnya.
+            {/* Formulir */}
+            <Reveal className="rounded-card border border-white/[.08] bg-card-grad p-6 md:p-8">
+              <h2 className="text-[22px] text-fg">Formulir permintaan penawaran</h2>
+              <p className="mt-2 mb-7 text-[14px] text-muted leading-6">
+                Lengkapi data berikut. Isian akan diteruskan ke WhatsApp kami.
               </p>
+              <QuoteFormDark />
             </Reveal>
           </div>
-
-          {/* Formulir */}
-          <Reveal variant="right" className="rounded-3xl border border-line bg-paper-2/40 p-6 md:p-8">
-            <h2 className="font-display text-2xl font-medium text-ink">
-              Formulir permintaan penawaran
-            </h2>
-            <p className="mt-2 mb-7 text-sm leading-6 text-ink-soft">
-              Lengkapi data berikut. Isian akan diteruskan ke WhatsApp kami.
-            </p>
-            <QuoteForm />
-          </Reveal>
-        </div>
-      </Container>
-    </section>
+        </Shell>
+      </section>
+    </>
   );
 }

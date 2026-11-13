@@ -2,23 +2,27 @@
 
 import type { ReactNode } from "react";
 import { usePathname } from "next/navigation";
-import { Footer } from "./Footer";
+import { SmoothScroll } from "./landing/motion";
+import { SiteFooter } from "./site/SiteFooter";
 import { Header } from "./Header";
 import { WhatsappFloat } from "./WhatsappFloat";
 
 /**
- * Homepage memakai UI Luora yang punya nav + footer sendiri, jadi chrome
- * Samaraya (Header/Footer/WhatsappFloat) hanya dirender di halaman lain.
+ * Homepage memakai UI landing yang punya nav + footer sendiri. Halaman lain
+ * dibungkus dunia gelap (.luora-root) dengan chrome Samaraya: nav gelap,
+ * smooth-scroll + reveal seperti homepage, footer gelap, dan tombol WhatsApp.
  */
 export function SiteFrame({ children }: { children: ReactNode }) {
   const isHome = usePathname() === "/";
   if (isHome) return <>{children}</>;
   return (
-    <>
+    <div className="luora-root flex min-h-dvh flex-col bg-black">
       <Header />
-      <main className="flex-1">{children}</main>
-      <Footer />
+      <SmoothScroll>
+        <main className="flex-1">{children}</main>
+      </SmoothScroll>
+      <SiteFooter />
       <WhatsappFloat />
-    </>
+    </div>
   );
 }

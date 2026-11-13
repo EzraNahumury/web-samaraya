@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
-import { Container } from "@/components/Container";
-import { Reveal } from "@/components/Reveal";
-import { Button } from "@/components/Button";
-import { PageHero } from "@/components/PageHero";
-import { SectionHeading } from "@/components/SectionHeading";
-import { ProcessSteps } from "@/components/ProcessSteps";
-import { CtaBand } from "@/components/CtaBand";
-import { WhatsappIcon } from "@/components/icons";
+import {
+  CtaBandDark,
+  CheckList,
+  Eyebrow,
+  FeatureGrid,
+  PageHeroDark,
+  SectionHead,
+  Shell,
+  Steps,
+  WaButton,
+} from "@/components/site/ui";
+import { Reveal } from "@/components/landing/motion";
 import { prosesPemesanan } from "@/lib/catalog";
-import { waLink, waMessage } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Sepatu Custom",
@@ -42,101 +45,82 @@ const siapkan = [
 export default function SepatuPage() {
   return (
     <>
-      <PageHero
+      <PageHeroDark
         breadcrumb="Sepatu"
         eyebrow="Sepatu"
         title={
           <>
-            Sepatu &amp; tas sepatu <span className="mark">custom</span>.
+            Sepatu &amp; tas sepatu <span className="text-green">custom</span>.
           </>
         }
-        description="Lini sepatu kami dikerjakan berbasis konsultasi agar sesuai kebutuhan. Ceritakan model dan jumlah yang Anda inginkan, kami bantu dari desain hingga produksi."
+        desc="Lini sepatu kami dikerjakan berbasis konsultasi agar sesuai kebutuhan. Ceritakan model dan jumlah yang Anda inginkan, kami bantu dari desain hingga produksi."
         media={{
           src: "/2025/11/DSC0544.webp",
           alt: "Tas sepatu custom produksi Samaraya",
-          fit: "contain",
         }}
         waContext="produk sepatu / tas sepatu custom"
         secondary={{ label: "Cara memesan", href: "#proses" }}
       />
 
       {/* Pernyataan jujur */}
-      <section className="py-20 md:py-28">
-        <Container>
+      <section className="py-16 md:py-24">
+        <Shell>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <p className="eyebrow mb-4 flex items-center justify-center gap-2.5 text-green-deep">
-              <span className="brand-dot" /> Berbasis Konsultasi
+            <div className="flex justify-center">
+              <Eyebrow>Berbasis Konsultasi</Eyebrow>
+            </div>
+            <p className="mt-6 font-medium text-[clamp(22px,3.2vw,34px)] text-fg leading-[1.12] tracking-[-0.025em]">
+              Spesifikasi, model, dan material sepatu kami tentukan bersama Anda — bukan dari
+              katalog massal.
             </p>
-            <p className="display-md text-ink">
-              Spesifikasi, model, dan material sepatu kami tentukan bersama Anda
-              — bukan dari katalog massal.
-            </p>
-            <p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-ink-soft">
-              Dengan begitu, hasilnya benar-benar sesuai kebutuhan komunitas,
-              instansi, atau event Anda. Informasi detail kami sampaikan saat
-              penawaran.
+            <p className="mx-auto mt-5 max-w-xl text-[16px] text-muted leading-relaxed">
+              Dengan begitu, hasilnya benar-benar sesuai kebutuhan komunitas, instansi, atau event
+              Anda. Informasi detail kami sampaikan saat penawaran.
             </p>
           </Reveal>
-        </Container>
+        </Shell>
       </section>
 
-      {/* Yang bisa kami bantu */}
-      <section className="bg-paper-2/60 py-20 md:py-28">
-        <Container>
-          <SectionHeading eyebrow="Yang Bisa Kami Bantu" title="Ruang lingkup layanan." />
-          <div className="mt-12 grid gap-x-10 gap-y-10 md:grid-cols-3">
-            {bantu.map((b, i) => (
-              <Reveal key={b.judul} delay={i * 90}>
-                <div className="relative pt-5">
-                  <span className="absolute left-0 top-0 h-px w-full bg-line" aria-hidden />
-                  <span className="absolute left-0 top-0 h-px w-10 bg-green" aria-hidden />
-                  <h3 className="font-display text-xl font-medium text-ink">{b.judul}</h3>
-                  <p className="mt-2.5 text-[0.98rem] leading-7 text-ink-soft">{b.teks}</p>
-                </div>
-              </Reveal>
-            ))}
+      {/* Ruang lingkup */}
+      <section className="py-16 md:py-24">
+        <Shell>
+          <SectionHead eyebrow="Yang Bisa Kami Bantu" title="Ruang lingkup layanan." />
+          <div className="mt-10">
+            <FeatureGrid items={bantu} cols="md:grid-cols-3" />
           </div>
-        </Container>
+        </Shell>
       </section>
 
-      {/* Siapkan + proses */}
-      <section id="proses" className="scroll-mt-24 py-20 md:py-28">
-        <Container>
-          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+      {/* Siapkan detail */}
+      <section className="py-16 md:py-24">
+        <Shell>
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
             <div>
-              <SectionHeading
+              <SectionHead
                 eyebrow="Sebelum Menghubungi"
                 title="Siapkan detail ini."
-                description="Agar kami bisa memberi penawaran yang akurat dan cepat."
+                desc="Agar kami bisa memberi penawaran yang akurat dan cepat."
               />
-              <ul className="mt-8 space-y-4">
-                {siapkan.map((s, i) => (
-                  <Reveal as="li" key={s} delay={i * 50} className="flex items-start gap-3">
-                    <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green text-white">
-                      <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none">
-                        <path d="m5 13 4 4L19 7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                    <span className="text-[1.02rem] leading-7 text-ink">{s}</span>
-                  </Reveal>
-                ))}
-              </ul>
-              <Reveal delay={240} className="mt-8">
-                <Button href={waLink(waMessage("produk sepatu / tas sepatu custom"))} external variant="accent" size="lg">
-                  <WhatsappIcon className="h-5 w-5" />
-                  Konsultasi Sekarang
-                </Button>
-              </Reveal>
+              <div className="mt-8">
+                <WaButton context="produk sepatu / tas sepatu custom">Konsultasi Sekarang</WaButton>
+              </div>
             </div>
-            <div>
-              <h3 className="mb-8 font-display text-xl font-medium text-ink">Alur pemesanan</h3>
-              <ProcessSteps steps={prosesPemesanan} />
-            </div>
+            <CheckList items={siapkan} />
           </div>
-        </Container>
+        </Shell>
       </section>
 
-      <CtaBand
+      {/* Alur pemesanan */}
+      <section id="proses" className="scroll-mt-24 py-16 md:py-24">
+        <Shell>
+          <SectionHead eyebrow="Alur Pemesanan" title="Cara memesan sepatu custom." />
+          <div className="mt-12">
+            <Steps steps={prosesPemesanan} />
+          </div>
+        </Shell>
+      </section>
+
+      <CtaBandDark
         title="Punya rencana pengadaan sepatu?"
         text="Ceritakan kebutuhan Anda. Kami bantu wujudkan dari konsultasi, desain, hingga produksi."
         context="produk sepatu custom"

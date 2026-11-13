@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
-import { Container } from "@/components/Container";
-import { Reveal } from "@/components/Reveal";
-import { Media } from "@/components/Media";
-import { SectionHeading } from "@/components/SectionHeading";
-import { FeatureGrid } from "@/components/FeatureGrid";
-import { CtaBand } from "@/components/CtaBand";
+import Image from "next/image";
+import {
+  CtaBandDark,
+  FeatureGrid,
+  PageHeroText,
+  PillRow,
+  SectionHead,
+  Shell,
+} from "@/components/site/ui";
+import { Reveal } from "@/components/landing/motion";
 import { keunggulan } from "@/lib/catalog";
 
 export const metadata: Metadata = {
@@ -26,73 +30,60 @@ const segmen = [
 export default function TentangKamiPage() {
   return (
     <>
-      {/* Header */}
-      <section className="pt-12 md:pt-16">
-        <Container>
-          <div className="max-w-3xl">
-            <Reveal as="p" className="eyebrow mb-5 flex items-center gap-2.5 text-green-deep">
-              <span className="brand-dot" /> Tentang Kami
-            </Reveal>
-            <Reveal as="h1" delay={60} className="display-xl">
-              Produsen custom yang tumbuh bersama mitranya.
-            </Reveal>
-            <Reveal as="p" delay={120} className="mt-6 text-xl leading-9 text-ink-soft">
-              Samaraya memproduksi tas, koper, konveksi, dan perlengkapan travel
-              secara custom. Semua dikerjakan di workshop sendiri, sehingga
-              kualitas dan jadwal lebih terkontrol — dari satu pesanan komunitas
-              hingga kebutuhan travel dalam jumlah besar.
-            </Reveal>
-          </div>
-        </Container>
-      </section>
+      <PageHeroText
+        breadcrumb="Tentang Kami"
+        eyebrow="Tentang Kami"
+        title="Produsen custom yang tumbuh bersama mitranya."
+        desc="Samaraya memproduksi tas, koper, konveksi, dan perlengkapan travel secara custom. Semua dikerjakan di workshop sendiri, sehingga kualitas dan jadwal lebih terkontrol — dari satu pesanan komunitas hingga kebutuhan travel dalam jumlah besar."
+      />
 
       {/* Gambar lebar */}
-      <section className="py-14 md:py-20">
-        <Container>
-          <Reveal variant="scale" className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl border border-line bg-paper-2 md:aspect-[21/9]">
-            <Media
-              src="/2024/06/SAMPUL.webp"
-              alt="Aktivitas produksi, pemeriksaan kualitas, dan pengemasan di Samaraya"
-              sizes="100vw"
-              priority
-            />
+      <section className="pb-16 md:pb-24">
+        <Shell>
+          <Reveal className="rounded-card border border-white/[.08] bg-card-grad p-3 shadow-float">
+            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-inner md:aspect-[21/9]">
+              <Image
+                src="/2024/06/SAMPUL.webp"
+                alt="Aktivitas produksi, pemeriksaan kualitas, dan pengemasan di Samaraya"
+                fill
+                sizes="(max-width: 1240px) 100vw, 1240px"
+                priority
+                className="object-cover"
+              />
+            </div>
           </Reveal>
-        </Container>
+        </Shell>
       </section>
 
       {/* Cara kami bekerja */}
-      <section className="py-14 md:py-20">
-        <Container>
+      <section className="py-16 md:py-24">
+        <Shell>
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-            <SectionHeading
+            <SectionHead
               eyebrow="Cara Kami Bekerja"
               title="Sederhana, transparan, dan terukur."
-              description="Kami menjaga agar setiap pesanan jelas sejak awal dan selesai sesuai kesepakatan."
+              desc="Kami menjaga agar setiap pesanan jelas sejak awal dan selesai sesuai kesepakatan."
             />
             <FeatureGrid items={keunggulan} />
           </div>
-        </Container>
+        </Shell>
       </section>
 
-      {/* Segmen yang dilayani */}
-      <section className="bg-paper-2/60 py-20 md:py-28">
-        <Container>
-          <SectionHeading
+      {/* Segmen */}
+      <section className="py-16 md:py-24">
+        <Shell>
+          <SectionHead
             eyebrow="Yang Kami Layani"
             title="Dipercaya beragam kebutuhan."
-            description="Pengalaman memproduksi untuk berbagai segmen membuat kami terbiasa menyesuaikan kebutuhan dan skala pesanan."
+            desc="Pengalaman memproduksi untuk berbagai segmen membuat kami terbiasa menyesuaikan kebutuhan dan skala pesanan."
           />
-          <div className="mt-10 flex flex-wrap gap-2.5">
-            {segmen.map((s) => (
-              <span key={s} className="rounded-full border border-line bg-paper px-4 py-2 text-sm font-medium text-ink">
-                {s}
-              </span>
-            ))}
+          <div className="mt-10">
+            <PillRow items={segmen} />
           </div>
-        </Container>
+        </Shell>
       </section>
 
-      <CtaBand
+      <CtaBandDark
         title="Mari diskusikan kebutuhan Anda."
         text="Ceritakan rencana Anda, kami bantu rumuskan produk yang tepat beserta penawarannya."
       />

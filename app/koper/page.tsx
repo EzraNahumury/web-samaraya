@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
-import { Container } from "@/components/Container";
-import { Reveal } from "@/components/Reveal";
-import { SylvaHeroScene } from "@/components/SylvaHeroScene";
-import { SectionHeading } from "@/components/SectionHeading";
-import { ProductCard } from "@/components/ProductCard";
-import { FaqList } from "@/components/FaqList";
-import { CtaBand } from "@/components/CtaBand";
-import { koperProduk } from "@/lib/catalog";
+import {
+  CtaBandDark,
+  Eyebrow,
+  FaqAccordion,
+  FeatureGrid,
+  PageHeroDark,
+  ProductGrid,
+  SectionHead,
+  Shell,
+} from "@/components/site/ui";
+import { Reveal } from "@/components/landing/motion";
 import type { Faq } from "@/lib/catalog";
+import { koperProduk } from "@/lib/catalog";
 
 export const metadata: Metadata = {
   title: "Koper Custom",
@@ -17,22 +21,10 @@ export const metadata: Metadata = {
 };
 
 const useCases = [
-  {
-    judul: "Travel Umrah & Haji",
-    teks: "Koper seragam jamaah lengkap dengan identitas travel Anda.",
-  },
-  {
-    judul: "Agen Tour",
-    teks: "Merchandise koper untuk paket perjalanan dan loyalitas pelanggan.",
-  },
-  {
-    judul: "Korporat & Instansi",
-    teks: "Souvenir dan hadiah event dengan branding perusahaan.",
-  },
-  {
-    judul: "Komunitas",
-    teks: "Koper edisi khusus untuk komunitas dan gathering.",
-  },
+  { judul: "Travel Umrah & Haji", teks: "Koper seragam jamaah lengkap dengan identitas travel Anda." },
+  { judul: "Agen Tour", teks: "Merchandise koper untuk paket perjalanan dan loyalitas pelanggan." },
+  { judul: "Korporat & Instansi", teks: "Souvenir dan hadiah event dengan branding perusahaan." },
+  { judul: "Komunitas", teks: "Koper edisi khusus untuk komunitas dan gathering." },
 ];
 
 const koperFaq: Faq[] = [
@@ -57,75 +49,77 @@ const koperFaq: Faq[] = [
 export default function KoperPage() {
   return (
     <>
-      <SylvaHeroScene />
+      <PageHeroDark
+        breadcrumb="Koper"
+        eyebrow="Koper"
+        title={
+          <>
+            Koper <span className="text-green">custom</span> untuk setiap perjalanan.
+          </>
+        }
+        desc="Koper kabin & bagasi hardcase yang siap dikustomisasi untuk travel umrah, haji, agen tour, dan merchandise korporat. Pilih warna, tambahkan branding Anda."
+        media={{
+          src: "/2024/10/Koper-Shafira-Hitam.jpg",
+          alt: "Koper hardcase hitam custom branding untuk travel",
+        }}
+        waContext="koper custom untuk travel"
+        secondary={{ label: "Lihat pilihan", href: "#katalog" }}
+      />
 
       {/* Range warna */}
-      <section id="katalog" className="scroll-mt-24 py-20 md:py-28">
-        <Container>
-          <SectionHeading
+      <section id="katalog" className="scroll-mt-24 py-16 md:py-24">
+        <Shell>
+          <SectionHead
             eyebrow="Pilihan Koper"
             title="Tersedia dalam beragam warna."
-            description="Ketuk produk untuk minta penawaran. Warna lain dapat didiskusikan sesuai ketersediaan."
+            desc="Ketuk produk untuk minta penawaran. Warna lain dapat didiskusikan sesuai ketersediaan."
           />
-          <div className="mt-12 grid grid-cols-2 gap-5 md:grid-cols-4">
-            {koperProduk.map((p, i) => (
-              <Reveal key={p.nama} delay={(i % 4) * 80}>
-                <ProductCard produk={p} context="Koper" ratio="aspect-square" />
-              </Reveal>
-            ))}
+          <div className="mt-10">
+            <ProductGrid
+              produk={koperProduk}
+              context="Koper"
+              cols="grid-cols-2 lg:grid-cols-4"
+            />
           </div>
-        </Container>
+        </Shell>
       </section>
 
       {/* Use cases */}
-      <section className="bg-paper-2/60 py-20 md:py-28">
-        <Container>
-          <SectionHeading
-            eyebrow="Cocok Untuk"
-            title="Koper yang bekerja untuk brand Anda."
-          />
-          <div className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
-            {useCases.map((u, i) => (
-              <Reveal key={u.judul} delay={(i % 4) * 80}>
-                <div className="relative pt-5">
-                  <span className="absolute left-0 top-0 h-px w-full bg-line" aria-hidden />
-                  <span className="absolute left-0 top-0 h-px w-10 bg-green" aria-hidden />
-                  <h3 className="font-display text-xl font-medium text-ink">{u.judul}</h3>
-                  <p className="mt-2.5 text-[0.98rem] leading-7 text-ink-soft">{u.teks}</p>
-                </div>
-              </Reveal>
-            ))}
+      <section className="py-16 md:py-24">
+        <Shell>
+          <SectionHead eyebrow="Cocok Untuk" title="Koper yang bekerja untuk brand Anda." />
+          <div className="mt-10">
+            <FeatureGrid items={useCases} cols="sm:grid-cols-2 lg:grid-cols-4" />
           </div>
-        </Container>
+        </Shell>
       </section>
 
-      {/* Catatan spesifikasi (jujur) */}
-      <section className="py-20 md:py-28">
-        <Container>
-          <Reveal className="mx-auto max-w-3xl rounded-3xl border border-line bg-cream p-8 text-center md:p-12">
-            <p className="eyebrow mb-4 flex items-center justify-center gap-2.5 text-green-deep">
-              <span className="brand-dot" /> Catatan
-            </p>
-            <p className="font-display text-xl leading-relaxed text-ink md:text-2xl">
-              Spesifikasi detail — ukuran, material, dan berat — kami sampaikan
-              langsung saat konsultasi agar sesuai dengan kebutuhan dan standar
-              perjalanan Anda.
+      {/* Catatan spesifikasi */}
+      <section className="py-16 md:py-24">
+        <Shell>
+          <Reveal className="mx-auto max-w-3xl rounded-card border border-white/[.08] bg-card-grad p-8 text-center md:p-12">
+            <div className="flex justify-center">
+              <Eyebrow>Catatan</Eyebrow>
+            </div>
+            <p className="mt-5 text-[clamp(18px,2.4vw,24px)] text-body leading-relaxed">
+              Spesifikasi detail — ukuran, material, dan berat — kami sampaikan langsung saat
+              konsultasi agar sesuai dengan kebutuhan dan standar perjalanan Anda.
             </p>
           </Reveal>
-        </Container>
+        </Shell>
       </section>
 
       {/* FAQ */}
-      <section className="pb-20 md:pb-28">
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
-            <SectionHeading eyebrow="FAQ" title="Seputar pemesanan koper." />
-            <FaqList items={koperFaq} />
+      <section className="py-16 md:py-24">
+        <Shell>
+          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+            <SectionHead eyebrow="FAQ" title="Seputar pemesanan koper." />
+            <FaqAccordion items={koperFaq} />
           </div>
-        </Container>
+        </Shell>
       </section>
 
-      <CtaBand
+      <CtaBandDark
         title="Butuh koper custom untuk travel Anda?"
         context="koper custom untuk travel"
       />

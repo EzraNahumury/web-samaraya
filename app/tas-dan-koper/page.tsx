@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { Container } from "@/components/Container";
-import { Reveal } from "@/components/Reveal";
-import { Media } from "@/components/Media";
-import { PageHero } from "@/components/PageHero";
-import { SectionHeading } from "@/components/SectionHeading";
-import { ProductShowcase } from "@/components/ProductShowcase";
-import { ProcessSteps } from "@/components/ProcessSteps";
-import { FaqList } from "@/components/FaqList";
-import { CtaBand } from "@/components/CtaBand";
-import { tasUnggulan, prosesPemesanan, faqUmum } from "@/lib/catalog";
+import {
+  CtaBandDark,
+  CheckList,
+  FaqAccordion,
+  PageHeroDark,
+  PillRow,
+  ProductGrid,
+  SectionHead,
+  Shell,
+  Steps,
+} from "@/components/site/ui";
+import { Reveal } from "@/components/landing/motion";
+import { faqUmum, prosesPemesanan, tasUnggulan } from "@/lib/catalog";
 
 export const metadata: Metadata = {
   title: "Tas & Koper Custom",
@@ -43,141 +47,124 @@ const opsiCustom = [
 export default function TasDanKoperPage() {
   return (
     <>
-      <PageHero
+      <PageHeroDark
         breadcrumb="Tas & Koper"
         eyebrow="Tas & Koper"
         title={
           <>
-            Tas &amp; koper <span className="mark">custom</span> untuk setiap
-            kebutuhan.
+            Tas &amp; koper <span className="text-green">custom</span> untuk setiap kebutuhan.
           </>
         }
-        description="Dari ransel harian komunitas hingga koper paket travel. Semua diproduksi sendiri dan dapat dikustomisasi penuh — bahan, warna, ukuran, dan branding."
+        desc="Dari ransel harian komunitas hingga koper paket travel. Semua diproduksi sendiri dan dapat dikustomisasi penuh — bahan, warna, ukuran, dan branding."
         media={{
           src: "/2024/01/ransel-sailor-pomac-barang-XTtuE.jpg",
           alt: "Ransel custom Sailor Pomac produksi Samaraya",
-          fit: "contain",
         }}
         waContext="produk tas & koper custom"
         secondary={{ label: "Lihat produk", href: "#katalog" }}
       />
 
       {/* Produk unggulan */}
-      <section id="katalog" className="scroll-mt-24 py-20 md:py-28">
-        <Container>
-          <SectionHeading
+      <section id="katalog" className="scroll-mt-24 py-16 md:py-24">
+        <Shell>
+          <SectionHead
             eyebrow="Produk Unggulan"
             title="Beberapa model yang sering dipesan."
-            description="Pilih model untuk melihat detail. Ketuk “Minta penawaran” untuk konsultasi via WhatsApp."
+            desc="Ketuk “Penawaran” pada produk untuk konsultasi langsung via WhatsApp."
           />
-          <Reveal className="mt-12">
-            <ProductShowcase produk={tasUnggulan} context="Tas & Koper" />
-          </Reveal>
-        </Container>
+          <div className="mt-10">
+            <ProductGrid produk={tasUnggulan} context="Tas & Koper" />
+          </div>
+        </Shell>
       </section>
 
       {/* Jenis + opsi custom */}
-      <section className="bg-paper-2/60 py-20 md:py-28">
-        <Container>
-          <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
+      <section className="py-16 md:py-24">
+        <Shell>
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
             <div>
-              <SectionHeading
-                eyebrow="Ragam Jenis"
-                title="Satu produsen, banyak pilihan."
-              />
-              <div className="mt-8 flex flex-wrap gap-2.5">
-                {jenis.map((j) => (
-                  <span
-                    key={j}
-                    className="rounded-full border border-line bg-paper px-4 py-2 text-sm font-medium text-ink"
-                  >
-                    {j}
-                  </span>
-                ))}
+              <SectionHead eyebrow="Ragam Jenis" title="Satu produsen, banyak pilihan." />
+              <div className="mt-8">
+                <PillRow items={jenis} />
               </div>
             </div>
             <div>
-              <SectionHeading
-                eyebrow="Opsi Custom"
-                title="Disesuaikan sampai detail."
-              />
-              <ul className="mt-8 space-y-4">
-                {opsiCustom.map((o, i) => (
-                  <Reveal as="li" key={o} delay={i * 50} className="flex items-start gap-3">
-                    <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green text-white">
-                      <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none">
-                        <path d="m5 13 4 4L19 7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                    <span className="text-[1.02rem] leading-7 text-ink">{o}</span>
-                  </Reveal>
-                ))}
-              </ul>
+              <SectionHead eyebrow="Opsi Custom" title="Disesuaikan sampai detail." />
+              <div className="mt-8">
+                <CheckList items={opsiCustom} />
+              </div>
             </div>
           </div>
-        </Container>
+        </Shell>
       </section>
 
       {/* Cross-link ke koper */}
-      <section className="py-20 md:py-28">
-        <Container>
-          <Link
-            href="/koper"
-            className="group grid items-center gap-8 overflow-hidden rounded-3xl border border-line bg-ink text-on-dark md:grid-cols-2"
-          >
-            <div className="p-8 md:p-12 lg:p-14">
-              <p className="eyebrow mb-4 text-green">Khusus Koper</p>
-              <h2 className="display-md text-on-dark">
-                Butuh koper untuk paket travel?
-              </h2>
-              <p className="mt-4 max-w-md leading-7 text-on-dark-soft">
-                Lihat lini koper kabin &amp; bagasi yang siap dikustomisasi untuk
-                travel umrah, haji, dan merchandise korporat.
-              </p>
-              <span className="mt-7 inline-flex items-center gap-2 font-medium text-on-dark">
-                Lihat koper
-                <span aria-hidden className="text-green transition-transform duration-300 group-hover:translate-x-1">
-                  →
+      <section className="py-16 md:py-24">
+        <Shell>
+          <Reveal>
+            <Link
+              href="/koper"
+              className="group grid items-center gap-8 overflow-hidden rounded-card border border-white/[.08] bg-card-grad md:grid-cols-2"
+            >
+              <div className="p-8 md:p-12 lg:p-14">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/[.08] bg-white/[.04] px-3 py-1 text-[12px] text-green">
+                  <span className="size-1.5 rounded-full bg-green" />
+                  Khusus Koper
                 </span>
-              </span>
-            </div>
-            <div className="relative aspect-[4/3] md:aspect-auto md:h-full md:min-h-[20rem]">
-              <Media
-                src="/2024/10/Koper-Shafira-Putih.jpg"
-                alt="Koper hardcase custom branding"
-                fit="contain"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="p-6"
-              />
-            </div>
-          </Link>
-        </Container>
+                <h2 className="mt-5 font-medium text-[clamp(24px,3vw,34px)] text-fg leading-[1.1] tracking-[-0.03em]">
+                  Butuh koper untuk paket travel?
+                </h2>
+                <p className="mt-4 max-w-md text-[15px] text-muted leading-relaxed">
+                  Lihat lini koper kabin &amp; bagasi yang siap dikustomisasi untuk travel umrah,
+                  haji, dan merchandise korporat.
+                </p>
+                <span className="mt-7 inline-flex items-center gap-2 text-[14px] font-medium text-fg">
+                  Lihat koper
+                  <span
+                    aria-hidden
+                    className="text-green transition-transform duration-300 group-hover:translate-x-1"
+                  >
+                    →
+                  </span>
+                </span>
+              </div>
+              <div className="relative aspect-[4/3] md:aspect-auto md:h-full md:min-h-[20rem]">
+                <div className="absolute inset-3 overflow-hidden rounded-inner bg-gradient-to-b from-[#f6f6f4] to-[#e8e8e2]">
+                  <Image
+                    src="/2024/10/Koper-Shafira-Putih.jpg"
+                    alt="Koper hardcase custom branding"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-contain p-6"
+                  />
+                </div>
+              </div>
+            </Link>
+          </Reveal>
+        </Shell>
       </section>
 
       {/* Proses */}
-      <section className="pb-20 md:pb-28">
-        <Container>
-          <SectionHeading
-            eyebrow="Alur Pemesanan"
-            title="Cara memesan di Samaraya."
-          />
-          <div className="mt-14">
-            <ProcessSteps steps={prosesPemesanan} />
+      <section className="py-16 md:py-24">
+        <Shell>
+          <SectionHead eyebrow="Alur Pemesanan" title="Cara memesan di Samaraya." />
+          <div className="mt-12">
+            <Steps steps={prosesPemesanan} />
           </div>
-        </Container>
+        </Shell>
       </section>
 
       {/* FAQ */}
-      <section className="pb-20 md:pb-28">
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
-            <SectionHeading eyebrow="FAQ" title="Hal yang sering ditanyakan." />
-            <FaqList items={faqUmum} />
+      <section className="py-16 md:py-24">
+        <Shell>
+          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+            <SectionHead eyebrow="FAQ" title="Hal yang sering ditanyakan." />
+            <FaqAccordion items={faqUmum} />
           </div>
-        </Container>
+        </Shell>
       </section>
 
-      <CtaBand context="produk tas & koper custom" />
+      <CtaBandDark context="produk tas & koper custom" />
     </>
   );
 }
