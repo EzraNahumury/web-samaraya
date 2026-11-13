@@ -1,9 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Hanken_Grotesk } from "next/font/google";
+import { Fraunces, Geist_Mono, Hanken_Grotesk, Outfit } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { WhatsappFloat } from "@/components/WhatsappFloat";
+import { SiteFrame } from "@/components/SiteFrame";
 import { site } from "@/lib/site";
 
 const fraunces = Fraunces({
@@ -16,6 +14,19 @@ const fraunces = Fraunces({
 const hanken = Hanken_Grotesk({
   subsets: ["latin"],
   variable: "--font-hanken",
+  display: "swap",
+});
+
+// Font untuk UI Luora (homepage)
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
   display: "swap",
 });
 
@@ -62,12 +73,13 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="id" className={`${fraunces.variable} ${hanken.variable}`}>
+    <html
+      lang="id"
+      data-scroll-behavior="smooth"
+      className={`${fraunces.variable} ${hanken.variable} ${outfit.variable} ${geistMono.variable}`}
+    >
       <body className="flex min-h-dvh flex-col bg-paper">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <WhatsappFloat />
+        <SiteFrame>{children}</SiteFrame>
       </body>
     </html>
   );

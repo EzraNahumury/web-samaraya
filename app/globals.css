@@ -278,6 +278,16 @@ h3 {
   pointer-events: none;
 }
 
+/* ---------- SylvaHero (ThreeUI) hero frame ---------- */
+.shader-frame {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 560px;
+  background: #080808;
+  overflow: hidden;
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -297,5 +307,202 @@ h3 {
   }
   .media-fade {
     opacity: 1;
+  }
+}
+
+/* ============================================================
+   LUORA landing design tokens (dari luora-main). Dipakai HANYA oleh
+   homepage (dibungkus .luora-root). Nama token tidak bentrok dengan
+   token Samaraya; yang bentrok (--font-sans, --color-green, color-scheme,
+   latar) di-scope ke .luora-root agar halaman lain tidak terpengaruh.
+   ============================================================ */
+:root {
+  --canvas: #0e0e10;
+  --dot: #232327;
+  --card-top: #2b2b2f;
+  --card-bot: #1e1e21;
+  --inner-top: #262629;
+  --inner-bot: #1b1b1e;
+  --surface: #1e1e21;
+  --raised: #252528;
+  --hover: #2e2e33;
+  --inset: #1c1c1f;
+  --field: #1a1a1d;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.13);
+  --fg: #e6e6e8;
+  --text: #dcdcde;
+  --body: #b9b9be;
+  --port: #a3a3a9;
+  --muted: #9b9ba1;
+  --dim: #6f6f76;
+  --primary: #f4f4f5;
+  --primary-fg: #0e0e10;
+  --wire: #7d7d84;
+  --wire-on: #f4f4f5;
+  --green: #4ade80;
+  --yellow: #facc15;
+  --red: #f87171;
+  --blue: #60a5fa;
+  --cyan: #67e8f9;
+  --mint: #86efac;
+  --pink: #f472b6;
+}
+
+@theme {
+  --color-canvas: var(--canvas);
+  --color-dot: var(--dot);
+  --color-surface: var(--surface);
+  --color-raised: var(--raised);
+  --color-hover: var(--hover);
+  --color-inset: var(--inset);
+  --color-field: var(--field);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-fg: var(--fg);
+  --color-text: var(--text);
+  --color-body: var(--body);
+  --color-port: var(--port);
+  --color-muted: var(--muted);
+  --color-dim: var(--dim);
+  --color-primary: var(--primary);
+  --color-primary-fg: var(--primary-fg);
+  --color-wire: var(--wire);
+  --color-yellow: var(--yellow);
+  --color-red: var(--red);
+  --color-blue: var(--blue);
+  --color-cyan: var(--cyan);
+  --color-mint: var(--mint);
+
+  --radius-chip: 8px;
+  --radius-tile: 10px;
+  --radius-inner: 12px;
+  --radius-card: 18px;
+
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --shadow-float: 0 14px 40px rgba(0, 0, 0, 0.55);
+
+  --text-ui-xs: 12.5px;
+  --text-ui-sm: 13px;
+  --text-ui-md: 14px;
+  --text-ui-lg: 15px;
+  --text-ui-display: 34px;
+  --text-ui-display--line-height: 1.12;
+  --text-ui-display--letter-spacing: -0.02em;
+
+  --font-mono: var(--font-geist-mono);
+  --animate-rise: rise 0.35s ease-out both;
+  --animate-pop: rise 0.35s ease-out both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+@utility ui-label {
+  font-family: var(--font-outfit);
+  font-size: 12.5px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+@utility bg-card-grad {
+  background: linear-gradient(180deg, var(--card-top) 0%, var(--card-bot) 100%);
+}
+@utility bg-inner-grad {
+  background: linear-gradient(180deg, var(--inner-top) 0%, var(--inner-bot) 100%);
+}
+@utility select-caret {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%239b9ba1' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+@utility dot-grid {
+  background-color: var(--canvas);
+  background-image: radial-gradient(circle, var(--dot) 1px, transparent 1.4px);
+  background-size: 22px 22px;
+}
+@utility glow-top {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 12%;
+    right: 12%;
+    top: -10px;
+    height: 46px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(244, 114, 182, 0.35), rgba(96, 165, 250, 0.35));
+    filter: blur(22px);
+    pointer-events: none;
+  }
+}
+
+/* Homepage wrapper: aktifkan dunia Luora hanya di sini */
+.luora-root {
+  --font-sans: var(--font-outfit);
+  --color-green: #4ade80;
+  background: #000;
+  color: var(--fg);
+  color-scheme: dark;
+  font-family: var(--font-outfit);
+}
+
+/* Netralkan tipografi dasar Samaraya (h1-h3 Fraunces) di dalam dunia Luora.
+   :where() = specificity 0 jadi utility class Luora (text-ui-*) tetap menang. */
+:where(.luora-root) h1,
+:where(.luora-root) h2,
+:where(.luora-root) h3 {
+  font-family: var(--font-sans);
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+}
+
+.luora-root .tree-guides {
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 13px,
+    rgb(255 255 255 / 0.09) 13px 14px,
+    transparent 14px 24px
+  );
+}
+.luora-root .tok-keyword {
+  color: #ffffff;
+  font-weight: 500;
+}
+.luora-root .tok-type {
+  color: #c4c8cd;
+}
+.luora-root .tok-string {
+  color: #a9adb3;
+  font-style: italic;
+}
+.luora-root .tok-comment {
+  color: #5d6268;
+  font-style: italic;
+}
+.luora-root .tok-number {
+  color: #d6d9dc;
+}
+
+@layer base {
+  .luora-root button:not(:disabled),
+  .luora-root [role="button"]:not([aria-disabled="true"]),
+  .luora-root [role="tab"],
+  .luora-root [role="option"],
+  .luora-root [role="menuitem"],
+  .luora-root a[href],
+  .luora-root summary,
+  .luora-root select:not(:disabled),
+  .luora-root label[for],
+  .luora-root input[type="checkbox"]:not(:disabled),
+  .luora-root input[type="radio"]:not(:disabled),
+  .luora-root input[type="range"]:not(:disabled) {
+    cursor: pointer;
   }
 }

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { Reveal } from "@/components/Reveal";
-import { PageHero } from "@/components/PageHero";
+import { SylvaHeroScene } from "@/components/SylvaHeroScene";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ProductCard } from "@/components/ProductCard";
 import { FaqList } from "@/components/FaqList";
@@ -57,23 +57,7 @@ const koperFaq: Faq[] = [
 export default function KoperPage() {
   return (
     <>
-      <PageHero
-        breadcrumb="Koper"
-        eyebrow="Koper"
-        title={
-          <>
-            Koper kabin &amp; bagasi, <span className="mark">siap custom</span>.
-          </>
-        }
-        description="Koper hardcase untuk kebutuhan travel dan merchandise. Pilih warna, tambahkan branding, dan pesan dalam jumlah sesuai kebutuhan Anda."
-        media={{
-          src: "/2024/10/Koper-Shafira-Hitam.jpg",
-          alt: "Koper hardcase hitam custom branding produksi Samaraya",
-          fit: "contain",
-        }}
-        waContext="koper custom"
-        secondary={{ label: "Lihat pilihan", href: "#katalog" }}
-      />
+      <SylvaHeroScene />
 
       {/* Range warna */}
       <section id="katalog" className="scroll-mt-24 py-20 md:py-28">
