@@ -1,16 +1,16 @@
 /**
- * Where Luora lives publicly. Canonical links, the sitemap, robots.txt and the social cards point
- * here; NEXT_PUBLIC_URL (set on the deploy) wins, a local build falls back to the public domain so
- * its pages never claim localhost as canonical.
+ * Di mana Samaraya tampil publik: canonical, sitemap, dan kartu sosial mengarah ke sini.
+ * NEXT_PUBLIC_URL (saat deploy) menang; build lokal jatuh ke domain publik.
  */
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_URL || "https://www.luorasec.xyz"
+  process.env.NEXT_PUBLIC_URL || "https://www.samaraya.id"
 ).replace(/\/+$/, "");
 
-export const SITE_NAME = "Luora";
-export const SITE_TITLE = "Luora: See what your smart contract actually does";
+export const SITE_NAME = "Samaraya";
+export const SITE_TITLE =
+  "Samaraya — Produsen & Konveksi Custom Tas, Koper & Apparel";
 export const SITE_DESCRIPTION =
-  "Luora is a defensive tool for smart contract auditors and bug bounty hunters: decoded Foundry traces, your contract as a graph, scenario tests exported as .t.sol, and Slither and Aderyn findings merged in one place.";
-export const X_HANDLE = "@luorasec";
+  "Samaraya adalah produsen & konveksi custom untuk tas, koper, apparel, dan perlengkapan travel. Produksi sendiri dengan kustomisasi desain & branding; melayani komunitas, instansi, korporat, hingga travel umrah & haji.";
+export const X_HANDLE = "@samaraya.id";
 
 export const LOCAL_APP = false;

@@ -10,7 +10,6 @@ import {
   SmoothScroll,
 } from "@/components/landing";
 import "@/components/landing/landing.css";
-import { GITHUB } from "@/components/landing/Hero";
 import {
   SITE_DESCRIPTION,
   SITE_NAME,
@@ -20,8 +19,7 @@ import {
 
 export const metadata = {
   title: { absolute: SITE_TITLE },
-  description:
-    "Defensive tooling for smart contract auditors: decoded Foundry traces, a contract graph that exports Foundry tests, deduplicated Slither and Aderyn findings, and forge coverage.",
+  description: SITE_DESCRIPTION,
   alternates: { canonical: "/" },
 };
 
@@ -33,33 +31,29 @@ const JSON_LD = {
       "@type": "Organization",
       "@id": ORG,
       name: SITE_NAME,
-      alternateName: "luorasec",
       url: SITE_URL,
-      logo: `${SITE_URL}/brand/tile-180.png`,
-      sameAs: ["https://x.com/luorasec", GITHUB],
+      logo: `${SITE_URL}/2024/04/Untitled-design-6.png`,
+      sameAs: ["https://instagram.com/samaraya.id"],
     },
     {
       "@type": "WebSite",
       "@id": `${SITE_URL}/#website`,
       name: SITE_NAME,
-      alternateName: "luorasec",
       url: SITE_URL,
       publisher: { "@id": ORG },
     },
     {
-      "@type": "SoftwareApplication",
+      "@type": "LocalBusiness",
       name: SITE_NAME,
       url: SITE_URL,
-      applicationCategory: "DeveloperApplication",
-      operatingSystem: "Any",
       description: SITE_DESCRIPTION,
-      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      image: `${SITE_URL}/2024/06/SAMPUL.webp`,
       publisher: { "@id": ORG },
     },
   ],
 };
 
-/** Homepage memakai UI Luora verbatim (di-scope dalam .luora-root). Konten DeFi akan diganti bertahap. */
+/** Homepage Samaraya — landing dark scroll-story (di-scope dalam .luora-root untuk token/temanya). */
 export default async function Home() {
   return (
     <main className="luora-root relative min-h-dvh overflow-x-clip">
