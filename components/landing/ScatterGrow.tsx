@@ -188,22 +188,6 @@ export function ScatterGrow({
       <div className="lp-hub">
         <div aria-hidden="true" data-lp="bg" className="lp-hub-bg" />
         <div className="lp-hub-o">
-          <span aria-hidden="true" data-lp="wire" className="lp-hub-axis" />
-          {[
-            ["180deg", "var(--hx)"],
-            ["90deg", "var(--hy)"],
-            ["0deg", "var(--hx)"],
-          ].map(([a, arm], i) => (
-            <span
-              key={a}
-              aria-hidden="true"
-              data-lp="wire"
-              className="lp-hub-wire"
-              style={{ "--a": a, "--arm": arm } as React.CSSProperties}
-            >
-              <i style={{ animationDelay: `${i * -1.1}s` }} />
-            </span>
-          ))}
           <div data-lp="core" className="lp-hub-core">
             <span className="flex items-center gap-2">
               <span className="grid size-5 place-items-center overflow-hidden rounded-full bg-[#20242c]">
