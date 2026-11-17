@@ -16,7 +16,7 @@ import { GitHubMark } from "./GitHubMark";
 import { HeroExit } from "./Haze";
 import { ProductTabs } from "./ProductTabs";
 import { ScatterGrow } from "./ScatterGrow";
-import InfiniteSpiral from "./InfiniteSpiral";
+import { SpecCatalog, type SpecItem } from "./SpecCatalog";
 import { XMark } from "./XMark";
 import { WhatsappIcon } from "@/components/icons";
 import { mainNav, waLink, waMessage } from "@/lib/site";
@@ -62,7 +62,7 @@ export function Nav({ active = "product" }: { active?: "product" | "docs" }) {
       </Link>
       {/* the landing's sections; the docs keep a quiet bar (onorca.dev/docs) without them */}
       <ul
-        className={`absolute left-1/2 -translate-x-1/2 items-center gap-0.5 rounded-full border border-white/[.08] bg-gradient-to-b from-white/[.07] to-white/[.02] p-1 shadow-[inset_0_1px_0_rgba(255,255,255,.08),0_10px_30px_rgba(0,0,0,.45)] ${docs ? "hidden" : "hidden md:flex"}`}
+        className={`absolute left-1/2 -translate-x-1/2 items-center gap-0.5 rounded-full border border-black/[.08] bg-gradient-to-b from-black/[.035] to-black/[.01] p-1 shadow-[inset_0_1px_0_rgba(255,255,255,.6),0_10px_30px_rgba(16,26,43,.08)] ${docs ? "hidden" : "hidden md:flex"}`}
       >
         {items.map((i) => (
           <li key={i.label}>
@@ -71,7 +71,7 @@ export function Nav({ active = "product" }: { active?: "product" | "docs" }) {
               aria-current={i.on ? "page" : undefined}
               className={`flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[13px] transition-colors ${
                 i.on
-                  ? "bg-white/[.1] text-fg shadow-[inset_0_1px_0_rgba(255,255,255,.1)]"
+                  ? "bg-white text-fg shadow-[0_1px_3px_rgba(16,26,43,.1)]"
                   : "text-muted hover:text-fg"
               }`}
             >
@@ -122,14 +122,14 @@ export function Nav({ active = "product" }: { active?: "product" | "docs" }) {
       </div>
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-4 bottom-0 h-px bg-gradient-to-r from-transparent via-white/[.08] to-transparent md:inset-x-6"
+        className="pointer-events-none absolute inset-x-4 bottom-0 h-px bg-gradient-to-r from-transparent via-black/[.08] to-transparent md:inset-x-6"
       />
       {[0, 1].map((k) => (
         <svg
           key={k}
           aria-hidden="true"
           viewBox="0 0 11 11"
-          className={`pointer-events-none absolute -bottom-[5px] hidden size-[11px] text-white/30 md:block ${k ? "right-6 translate-x-1/2" : "left-6 -translate-x-1/2"}`}
+          className={`pointer-events-none absolute -bottom-[5px] hidden size-[11px] text-black/20 md:block ${k ? "right-6 translate-x-1/2" : "left-6 -translate-x-1/2"}`}
           stroke="currentColor"
         >
           <path d="M0 5.5h11M5.5 0v11" />
@@ -197,15 +197,13 @@ const TOOLS = [
  * running off the bottom of the first screen. The graph is cut to the cards that fit the window
  * (graph y < 900), so the page carries only what shows.
  */
-const SPIRAL = [
-  { src: "/2024/06/013-JERSEY.jpg", alt: "Jersey custom Samaraya" },
-  { src: "/2024/10/Koper-Shafira-Hitam.jpg", alt: "Koper hardcase custom" },
-  { src: "/2024/06/004-VARSITY.jpg", alt: "Jaket varsity custom" },
-  { src: "/2024/01/ransel-sailor-pomac-barang-XTtuE.jpg", alt: "Ransel custom" },
-  { src: "/2024/06/003-hoodie.jpg", alt: "Hoodie custom" },
-  { src: "/2024/06/002-BACKPACK.jpg", alt: "Backpack custom" },
-  { src: "/2024/06/006-KEMEJA-RESMI.jpg", alt: "Kemeja seragam custom" },
-  { src: "/2024/06/014-TOPI.jpg", alt: "Topi custom" },
+const CATALOG: SpecItem[] = [
+  { src: "/2024/06/013-JERSEY.jpg", alt: "Jersey custom Samaraya", nama: "Jersey Custom", tag: "Konveksi", href: "/konveksi" },
+  { src: "/2024/01/ransel-sailor-pomac-barang-XTtuE.jpg", alt: "Ransel Sailor Pomac", nama: "Ransel Sailor Pomac", tag: "Tas", href: "/tas-dan-koper" },
+  { src: "/2024/10/Koper-Shafira-Hitam.jpg", alt: "Koper hardcase custom", nama: "Koper Hardcase", tag: "Koper", href: "/koper" },
+  { src: "/2024/06/004-VARSITY.jpg", alt: "Jaket varsity custom", nama: "Jaket Varsity", tag: "Konveksi", href: "/konveksi" },
+  { src: "/2024/06/002-BACKPACK.jpg", alt: "Backpack custom", nama: "Backpack Custom", tag: "Tas", href: "/tas-dan-koper" },
+  { src: "/2024/06/014-TOPI.jpg", alt: "Topi custom", nama: "Topi Custom", tag: "Konveksi", href: "/konveksi" },
 ];
 
 const TRUST = [
@@ -232,110 +230,14 @@ export function Hero() {
 
       <div
         data-lp="hero-body"
-        className="relative z-10 mx-auto grid min-h-[calc(100svh-76px)] max-w-[1240px] items-center gap-10 px-4 pt-6 pb-16 md:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8"
+        className="relative z-10 mx-auto max-w-[1280px] px-4 pt-4 pb-10 md:px-6"
       >
-        {/* kiri: copy */}
-        <div className="relative z-10">
-          <p
-            className="sam-up mb-5 font-mono text-[12px] font-medium uppercase tracking-[0.22em] text-muted"
-            style={{ "--d": "0s" } as Delay}
-          >
-            Custom · Tas · Koper · Konveksi · Apparel
-          </p>
-          <h1 className="font-medium text-[clamp(38px,5.2vw,66px)] leading-[1.02] tracking-[-0.03em] text-fg">
-            {HEAD.map((w, i) => (
-              <span
-                key={`${w.t}-${i}`}
-                className="sam-word"
-                style={{ "--i": i } as Delay}
-              >
-                {w.g ? <span className="sam-grad">{w.t}</span> : w.t}
-              </span>
-            ))}
-          </h1>
-          <p
-            className="sam-up mt-6 max-w-xl text-[16px] leading-relaxed text-muted"
-            style={{ "--d": "0.6s" } as Delay}
-          >
-            Produksi sendiri dengan kustomisasi penuh — desain, bahan, dan
-            branding sesuai identitas Anda. Melayani komunitas, instansi,
-            korporat, hingga travel umrah &amp; haji.
-          </p>
-          <div
-            className="sam-up mt-8 flex flex-wrap items-center gap-3"
-            style={{ "--d": "0.75s" } as Delay}
-          >
-            <a
-              href={waLink(waMessage())}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ec4899] via-[#a855f7] to-[#6366f1] px-6 py-3 font-semibold text-[15px] text-white shadow-[0_12px_34px_rgba(168,85,247,.35)] transition-transform hover:-translate-y-0.5"
-            >
-              <WhatsappIcon className="size-[18px]" />
-              Minta Penawaran
-            </a>
-            <Link
-              href="/tas-dan-koper"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-[15px] text-fg transition-colors hover:border-white/40"
-            >
-              Lihat Koleksi
-            </Link>
-          </div>
-          <div
-            className="sam-up mt-10 flex items-center gap-3"
-            style={{ "--d": "0.9s" } as Delay}
-          >
-            <div className="flex -space-x-2.5">
-              {TRUST.map((s) => (
-                <span
-                  key={s}
-                  className="size-9 overflow-hidden rounded-full border-2 border-black bg-raised"
-                >
-                  <Image
-                    src={s}
-                    alt=""
-                    width={44}
-                    height={44}
-                    className="size-full object-cover"
-                  />
-                </span>
-              ))}
-            </div>
-            <p className="max-w-[260px] text-[13px] leading-snug text-muted">
-              Dipercaya komunitas, instansi &amp; travel di seluruh Indonesia.
-            </p>
-          </div>
-        </div>
-
-        {/* kanan: galeri 3D */}
+        {/* katalog spec-sheet full-width (coverflow gerak sendiri, klik → detail) */}
         <div
-          className="lh-up relative h-[440px] md:h-[560px]"
-          style={{ "--d": "0.3s" } as Delay}
+          className="lh-up relative h-[calc(100svh-76px-56px)] min-h-[500px]"
+          style={{ "--d": "0.25s" } as Delay}
         >
-          <InfiniteSpiral
-            items={SPIRAL}
-            animationMode="all"
-            speed={0.5}
-            radius={190}
-            cardWidth={210}
-            cardHeight={282}
-            verticalSpacing={78}
-            perspective={1100}
-            cardRadius={16}
-            centerScale={1.16}
-            edgeBlur={5}
-            cardsPerTurn={7}
-            imageFit="cover"
-            pauseOnHover
-          />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 text-center">
-            <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-dim">
-              Koleksi Samaraya
-            </p>
-            <p className="mt-1 text-[15px] font-medium text-fg">
-              Kustomisasi penuh · Desain bebas
-            </p>
-          </div>
+          <SpecCatalog items={CATALOG} />
         </div>
       </div>
     </HeroExit>

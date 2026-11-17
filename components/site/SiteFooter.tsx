@@ -25,7 +25,7 @@ export function SiteFooter() {
     },
   ];
   return (
-    <footer className="relative border-t border-white/[.06] bg-black">
+    <footer className="relative border-t border-black/[.07] bg-[#f5f6f3]">
       <div className="mx-auto grid max-w-[1240px] gap-10 px-4 pt-16 pb-10 md:grid-cols-[2fr_1fr_1fr] md:px-6">
         <div>
           <Link href="/" className="flex items-center gap-2.5">

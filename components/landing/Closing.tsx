@@ -84,7 +84,7 @@ export function Faq() {
     >
       <Reveal className="grid gap-5 md:grid-cols-2 md:items-end md:gap-10">
         <div>
-          <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/[.08] bg-white/[.04] px-3 py-1 text-[12px] text-muted">
+          <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-black/[.08] bg-black/[.03] px-3 py-1 text-[12px] text-muted">
             <span className="size-1.5 rounded-full bg-white/60" />
             FAQ
           </p>
@@ -104,12 +104,12 @@ export function Faq() {
         className="mt-10 grid gap-3 md:mt-14 md:grid-cols-[260px_minmax(0,1fr)] md:grid-rows-[auto_1fr] md:gap-4"
       >
         {/* F1: the category tabs (radios, so the filter needs no JS) */}
-        <fieldset className="grid grid-cols-2 gap-1 rounded-[16px] border border-white/[.07] bg-[#0e0e10] p-1.5 md:flex md:flex-col">
+        <fieldset className="grid grid-cols-2 gap-1 rounded-[16px] border border-black/[.07] bg-[#f1f2ef] p-1.5 md:flex md:flex-col">
           <legend className="sr-only">Filter the questions</legend>
           {CATS.map(([id, label]) => (
             <label
               key={id}
-              className="flex h-10 cursor-pointer items-center justify-center rounded-[11px] px-3 text-[13.5px] text-muted transition-colors hover:text-fg has-[:checked]:bg-gradient-to-b has-[:checked]:from-white/[.09] has-[:checked]:to-white/[.04] has-[:checked]:text-fg has-[:checked]:shadow-[inset_0_1px_0_rgba(255,255,255,.08)] has-[:focus-visible]:ring-1 has-[:focus-visible]:ring-white/30"
+              className="flex h-10 cursor-pointer items-center justify-center rounded-[11px] px-3 text-[13.5px] text-muted transition-colors hover:text-fg has-[:checked]:bg-white has-[:checked]:text-fg has-[:checked]:shadow-[0_1px_3px_rgba(16,26,43,.12)] has-[:focus-visible]:ring-1 has-[:focus-visible]:ring-black/20"
             >
               <input
                 type="radio"
@@ -129,11 +129,11 @@ export function Faq() {
             <details
               key={q}
               data-cat={cat}
-              className="group rounded-[16px] border border-white/[.07] bg-gradient-to-b from-[#151517] to-[#0f0f11] px-5 transition-colors hover:border-white/[.12] open:border-white/[.12] md:px-6 [&_summary::-webkit-details-marker]:hidden"
+              className="group rounded-[16px] border border-black/[.07] bg-card-grad px-5 transition-colors hover:border-black/[.16] open:border-black/[.16] md:px-6 [&_summary::-webkit-details-marker]:hidden"
             >
               <summary className="flex min-h-[62px] cursor-pointer list-none items-center justify-between gap-6 py-3 text-[15px] text-fg md:text-[16px]">
                 {q}
-                <span className="grid size-8 flex-none place-items-center rounded-full border border-white/[.1] bg-white/[.03] text-muted transition-transform duration-300 group-open:rotate-180">
+                <span className="grid size-8 flex-none place-items-center rounded-full border border-black/[.12] bg-black/[.03] text-muted transition-transform duration-300 group-open:rotate-180">
                   <svg
                     aria-hidden="true"
                     viewBox="0 0 16 16"
@@ -156,7 +156,7 @@ export function Faq() {
         </div>
 
         {/* F1: 'Got questions?' at the foot of the left column */}
-        <div className="rounded-[16px] border border-white/[.07] bg-[#0e0e10] p-5 md:col-start-1 md:row-start-2 md:self-end">
+        <div className="rounded-[16px] border border-black/[.07] bg-[#f3f4f1] p-5 md:col-start-1 md:row-start-2 md:self-end">
           <p className="text-[17px] text-fg">Masih ada pertanyaan?</p>
           <p className="mt-2 text-[13.5px] text-muted leading-relaxed">
             Chat tim kami via WhatsApp dengan kebutuhan Anda — kami bantu dari
@@ -166,7 +166,7 @@ export function Faq() {
             href={waLink(waMessage())}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center gap-1.5 text-[13.5px] text-fg transition-colors hover:text-white"
+            className="mt-4 inline-flex items-center gap-1.5 text-[13.5px] text-green transition-colors hover:brightness-90"
           >
             Chat WhatsApp
             <span aria-hidden="true">→</span>
@@ -202,7 +202,7 @@ export function FinalCta() {
             aria-hidden="true"
             viewBox="-40 -40 80 80"
             className="lp-breathe relative mx-auto mb-8 size-12"
-            stroke="#fff"
+            stroke="#5f9e21"
             strokeWidth="2.5"
           >
             <path d="M0-7V-34M0 7V34M-7 0H-34M7 0H34" />
@@ -220,14 +220,14 @@ export function FinalCta() {
               href={waLink(waMessage())}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 font-medium text-[14px] text-primary-fg transition-colors hover:bg-white"
+              className="inline-flex items-center gap-2 rounded-full bg-green px-5 py-2.5 font-medium text-[14px] text-white shadow-[0_10px_26px_-10px_rgba(95,158,33,.6)] transition-[filter] hover:brightness-110"
             >
               <WhatsappIcon className="size-4" />
               Minta Penawaran
             </a>
             <Link
               href="/kontak"
-              className="inline-flex items-center gap-2 rounded-full border border-white/[.09] bg-raised px-5 py-2.5 text-[14px] text-fg transition-colors hover:bg-hover"
+              className="inline-flex items-center gap-2 rounded-full border border-black/[.1] bg-raised px-5 py-2.5 text-[14px] text-fg transition-colors hover:bg-hover"
             >
               Hubungi Kami
             </Link>
@@ -264,7 +264,7 @@ export function Footer() {
     },
   ];
   return (
-    <footer className="bg-black">
+    <footer className="border-t border-black/[.07] bg-[#f5f6f3]">
       <div className="mx-auto grid max-w-[1240px] gap-10 px-4 pt-16 pb-10 md:grid-cols-[2fr_1fr_1fr] md:px-6">
         <div>
           <span className="flex items-center gap-2.5">

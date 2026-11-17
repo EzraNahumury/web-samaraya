@@ -3,9 +3,7 @@ import {
   Faq,
   Features,
   Finale,
-  Findings,
   Hero,
-  Product,
   Run,
   SmoothScroll,
 } from "@/components/landing";
@@ -66,10 +64,8 @@ export default async function Home() {
       />
       <SmoothScroll>
         <Hero />
-        <Product />
         <Run />
         <Features />
-        <Findings />
         <Compare />
         <Faq />
         <Finale />

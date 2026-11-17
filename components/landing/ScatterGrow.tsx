@@ -182,7 +182,7 @@ export function ScatterGrow({
         <h2 className="font-medium text-[clamp(30px,4vw,50px)] text-fg leading-[1.04] tracking-[-0.03em]">
           Semua produk custom Anda,
           <br />
-          <span className="text-white/45">satu produsen.</span>
+          <span className="text-dim">satu produsen.</span>
         </h2>
       </div>
       <div className="lp-hub">

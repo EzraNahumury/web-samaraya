@@ -24,12 +24,12 @@ export function ProductGallery() {
       <div className="shell">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/[.08] bg-white/[.04] px-3 py-1 text-[12px] text-muted">
+            <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-black/[.08] bg-black/[.03] px-3 py-1 text-[12px] text-muted">
               <span className="size-1.5 rounded-full bg-[var(--lp-green,#4ade80)]" />
               Galeri Produk
             </p>
             <h2 className="font-medium text-[clamp(30px,4vw,50px)] text-fg leading-[1.04] tracking-[-0.03em]">
-              Ragam produk custom <span className="text-white/45">untuk brand Anda.</span>
+              Ragam produk custom <span className="text-dim">untuk brand Anda.</span>
             </h2>
             <p className="mt-4 text-[15px] text-muted leading-relaxed">
               Seret untuk memutar — tas, koper, apparel, dan perlengkapan travel.

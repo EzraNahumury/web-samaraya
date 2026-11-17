@@ -16,7 +16,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
   const isHome = usePathname() === "/";
   if (isHome) return <>{children}</>;
   return (
-    <div className="luora-root flex min-h-dvh flex-col bg-black">
+    <div className="luora-root flex min-h-dvh flex-col bg-white">
       <Header />
       <SmoothScroll>
         <main className="flex-1">{children}</main>

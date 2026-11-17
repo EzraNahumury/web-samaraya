@@ -28,7 +28,7 @@ export function Shell({
 
 export function Eyebrow({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-white/[.08] bg-white/[.04] px-3 py-1 text-[12px] text-muted">
+    <span className="inline-flex items-center gap-2 rounded-full border border-black/[.08] bg-black/[.03] px-3 py-1 text-[12px] text-muted">
       <span className="size-1.5 rounded-full bg-green" />
       {children}
     </span>
@@ -65,7 +65,7 @@ export function WaButton({
       target="_blank"
       rel="noopener noreferrer"
       className={cx(
-        "inline-flex items-center gap-2 rounded-full bg-green px-5 py-3 font-semibold text-[14px] text-[#07130a] transition-[transform,filter] duration-300 hover:-translate-y-0.5 hover:brightness-110",
+        "inline-flex items-center gap-2 rounded-full bg-green px-5 py-3 font-semibold text-[14px] text-white shadow-[0_8px_24px_-10px_rgba(95,158,33,.6)] transition-[transform,filter] duration-300 hover:-translate-y-0.5 hover:brightness-110",
         className,
       )}
     >
@@ -83,7 +83,7 @@ export function GhostButton({
   children: ReactNode;
 }) {
   const inner = (
-    <span className="inline-flex items-center gap-2 rounded-full border border-white/[.1] bg-raised px-5 py-3 text-[14px] text-fg transition-colors hover:bg-hover">
+    <span className="inline-flex items-center gap-2 rounded-full border border-black/[.12] bg-raised px-5 py-3 text-[14px] text-fg transition-colors hover:bg-hover">
       {children}
     </span>
   );
@@ -148,7 +148,7 @@ export function MediaFrame({
   return (
     <div
       className={cx(
-        "relative rounded-card border border-white/[.08] bg-card-grad p-3 shadow-float",
+        "relative rounded-card border border-black/[.07] bg-card-grad p-3 shadow-float",
         className,
       )}
     >
@@ -292,7 +292,7 @@ export function ProductGrid({
       {produk.map((p) => (
         <div
           key={p.nama}
-          className="group overflow-hidden rounded-card border border-white/[.07] bg-card-grad p-3 transition-colors duration-300 hover:border-white/[.14]"
+          className="group overflow-hidden rounded-card border border-black/[.07] bg-card-grad p-3 transition-colors duration-300 hover:border-black/[.16] hover:shadow-[0_18px_40px_-24px_rgba(16,26,43,.35)]"
         >
           <div className="relative aspect-square overflow-hidden rounded-inner bg-gradient-to-b from-[#f6f6f4] to-[#e8e8e2]">
             <Image
@@ -337,7 +337,7 @@ export function PillRow({ items }: { items: string[] }) {
       {items.map((j) => (
         <span
           key={j}
-          className="rounded-full border border-white/[.08] bg-white/[.03] px-4 py-2 text-[13.5px] text-body transition-colors hover:border-white/[.18] hover:text-fg"
+          className="rounded-full border border-black/[.1] bg-black/[.02] px-4 py-2 text-[13.5px] text-body transition-colors hover:border-green/50 hover:text-fg"
         >
           {j}
         </span>
@@ -371,7 +371,7 @@ export function Steps({ steps }: { steps: Langkah[] }) {
       {steps.map((s) => (
         <div
           key={s.no}
-          className="rounded-inner border border-white/[.07] bg-card-grad p-5 transition-colors hover:border-white/[.14]"
+          className="rounded-inner border border-black/[.07] bg-card-grad p-5 transition-colors hover:border-black/[.16]"
         >
           <span className="font-mono text-[13px] text-green">{s.no}</span>
           <h3 className="mt-3 text-[15.5px] text-fg">{s.judul}</h3>
@@ -398,7 +398,7 @@ export function FeatureGrid({
       {items.map((k, i) => (
         <div
           key={k.judul}
-          className="rounded-card border border-white/[.07] bg-card-grad p-6 transition-colors hover:border-white/[.14]"
+          className="rounded-card border border-black/[.07] bg-card-grad p-6 transition-colors hover:border-black/[.16]"
         >
           <span className="font-mono text-[12px] text-dim">
             {String(i + 1).padStart(2, "0")}
@@ -421,11 +421,11 @@ export function FaqAccordion({ items }: { items: Faq[] }) {
       {items.map(({ q, a }) => (
         <details
           key={q}
-          className="group rounded-[16px] border border-white/[.07] bg-gradient-to-b from-[#151517] to-[#0f0f11] px-5 transition-colors hover:border-white/[.12] open:border-white/[.12] md:px-6 [&_summary::-webkit-details-marker]:hidden"
+          className="group rounded-[16px] border border-black/[.07] bg-card-grad px-5 transition-colors hover:border-black/[.16] open:border-black/[.16] md:px-6 [&_summary::-webkit-details-marker]:hidden"
         >
           <summary className="flex min-h-[62px] cursor-pointer list-none items-center justify-between gap-6 py-3 text-[15px] text-fg md:text-[16px]">
             {q}
-            <span className="grid size-8 flex-none place-items-center rounded-full border border-white/[.1] bg-white/[.03] text-muted transition-transform duration-300 group-open:rotate-180">
+            <span className="grid size-8 flex-none place-items-center rounded-full border border-black/[.12] bg-black/[.03] text-muted transition-transform duration-300 group-open:rotate-180">
               <svg
                 aria-hidden="true"
                 viewBox="0 0 16 16"

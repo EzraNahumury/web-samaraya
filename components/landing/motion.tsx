@@ -92,21 +92,22 @@ export function useStage(
  * (collars, fades). Never on :root: an inherited property changing there restyles the whole page
  * on every scroll frame.
  */
+// Palet TERANG: dasar putih dengan drift halus (warm/cool) + aura hijau lembut.
 const TONES: Record<
   string,
   { bg: number[]; glow: number; x: number; y: number }
 > = {
-  hero: { bg: [0, 0, 0], glow: 0.09, x: 50, y: 0 },
-  product: { bg: [9, 9, 11], glow: 0.07, x: 50, y: 18 },
-  run: { bg: [12, 12, 14], glow: 0.06, x: 50, y: 50 },
-  words: { bg: [6, 6, 7], glow: 0.05, x: 50, y: 40 },
-  how: { bg: [10, 10, 12], glow: 0.04, x: 50, y: 60 },
-  findings: { bg: [13, 13, 15], glow: 0.08, x: 50, y: 100 },
-  tests: { bg: [9, 9, 11], glow: 0.05, x: 50, y: 50 },
-  ask: { bg: [16, 15, 14], glow: 0.07, x: 30, y: 80 },
-  compare: { bg: [7, 7, 8], glow: 0.05, x: 30, y: 30 },
-  faq: { bg: [4, 4, 5], glow: 0.04, x: 50, y: 60 },
-  finale: { bg: [0, 0, 0], glow: 0, x: 50, y: 100 },
+  hero: { bg: [255, 255, 255], glow: 0.1, x: 50, y: 0 },
+  product: { bg: [248, 249, 247], glow: 0.08, x: 50, y: 18 },
+  run: { bg: [245, 246, 243], glow: 0.07, x: 50, y: 50 },
+  words: { bg: [250, 250, 248], glow: 0.06, x: 50, y: 40 },
+  how: { bg: [246, 247, 244], glow: 0.05, x: 50, y: 60 },
+  findings: { bg: [244, 245, 242], glow: 0.09, x: 50, y: 100 },
+  tests: { bg: [248, 249, 247], glow: 0.06, x: 50, y: 50 },
+  ask: { bg: [249, 248, 245], glow: 0.07, x: 30, y: 80 },
+  compare: { bg: [250, 250, 248], glow: 0.05, x: 30, y: 30 },
+  faq: { bg: [252, 252, 250], glow: 0.05, x: 50, y: 60 },
+  finale: { bg: [255, 255, 255], glow: 0, x: 50, y: 100 },
 };
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 

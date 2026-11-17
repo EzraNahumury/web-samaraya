@@ -94,7 +94,7 @@ export function ProductRing({ items }: { items: Cover[] }) {
             ref={(el) => {
               cardRefs.current[i] = el;
             }}
-            className="absolute top-1/2 left-1/2 h-[clamp(190px,21vw,290px)] w-[clamp(140px,15vw,210px)] overflow-hidden rounded-[14px] border border-white/15 bg-[#161618] shadow-[0_24px_60px_-16px_rgba(0,0,0,.85)]"
+            className="absolute top-1/2 left-1/2 h-[clamp(190px,21vw,290px)] w-[clamp(140px,15vw,210px)] overflow-hidden rounded-[14px] border border-black/10 bg-[#eef0ec] shadow-[0_24px_60px_-22px_rgba(16,26,43,.3)]"
             style={{ backfaceVisibility: "hidden" }}
           >
             {/* biome-ignore lint/performance/noImgElement: cover 3D butuh <img> langsung */}

@@ -317,36 +317,38 @@ h3 {
    latar) di-scope ke .luora-root agar halaman lain tidak terpengaruh.
    ============================================================ */
 :root {
-  --canvas: #0e0e10;
-  --dot: #232327;
-  --card-top: #2b2b2f;
-  --card-bot: #1e1e21;
-  --inner-top: #262629;
-  --inner-bot: #1b1b1e;
-  --surface: #1e1e21;
-  --raised: #252528;
-  --hover: #2e2e33;
-  --inset: #1c1c1f;
-  --field: #1a1a1d;
-  --border: rgba(255, 255, 255, 0.07);
-  --border-strong: rgba(255, 255, 255, 0.13);
-  --fg: #e6e6e8;
-  --text: #dcdcde;
-  --body: #b9b9be;
-  --port: #a3a3a9;
-  --muted: #9b9ba1;
-  --dim: #6f6f76;
-  --primary: #f4f4f5;
-  --primary-fg: #0e0e10;
-  --wire: #7d7d84;
-  --wire-on: #f4f4f5;
-  --green: #4ade80;
-  --yellow: #facc15;
-  --red: #f87171;
-  --blue: #60a5fa;
-  --cyan: #67e8f9;
-  --mint: #86efac;
-  --pink: #f472b6;
+  /* Palet TERANG (putih + hijau). Nama token tetap; nilai dibalik dari gelap.
+     Dipakai di dunia .luora-root (homepage + halaman lain). */
+  --canvas: #ffffff;
+  --dot: #e3e5e8;
+  --card-top: #ffffff;
+  --card-bot: #f3f4f1;
+  --inner-top: #fbfbfa;
+  --inner-bot: #f1f2ef;
+  --surface: #f6f7f4;
+  --raised: #eef0ec;
+  --hover: #e6e8e3;
+  --inset: #f1f2ef;
+  --field: #ffffff;
+  --border: rgba(16, 26, 43, 0.1);
+  --border-strong: rgba(16, 26, 43, 0.18);
+  --fg: #141c26;
+  --text: #22303d;
+  --body: #3f4b57;
+  --port: #566370;
+  --muted: #5d6771;
+  --dim: #8b949d;
+  --primary: #141c26;
+  --primary-fg: #ffffff;
+  --wire: #9aa3ad;
+  --wire-on: #141c26;
+  --green: #5f9e21;
+  --yellow: #d97706;
+  --red: #dc2626;
+  --blue: #2563eb;
+  --cyan: #0891b2;
+  --mint: #15803d;
+  --pink: #db2777;
 }
 
 @theme {
@@ -445,10 +447,10 @@ h3 {
 /* Homepage wrapper: aktifkan dunia Luora hanya di sini */
 .luora-root {
   --font-sans: var(--font-outfit);
-  --color-green: #4ade80;
-  background: #000;
+  --color-green: #5f9e21;
+  background: #ffffff;
   color: var(--fg);
-  color-scheme: dark;
+  color-scheme: light;
   font-family: var(--font-outfit);
 }
 
@@ -467,27 +469,27 @@ h3 {
   background: repeating-linear-gradient(
     90deg,
     transparent 0 13px,
-    rgb(255 255 255 / 0.09) 13px 14px,
+    rgb(16 26 43 / 0.1) 13px 14px,
     transparent 14px 24px
   );
 }
 .luora-root .tok-keyword {
-  color: #ffffff;
-  font-weight: 500;
+  color: #0e1a2b;
+  font-weight: 600;
 }
 .luora-root .tok-type {
-  color: #c4c8cd;
+  color: #3c6a14;
 }
 .luora-root .tok-string {
-  color: #a9adb3;
+  color: #5f9e21;
   font-style: italic;
 }
 .luora-root .tok-comment {
-  color: #5d6268;
+  color: #9aa3ad;
   font-style: italic;
 }
 .luora-root .tok-number {
-  color: #d6d9dc;
+  color: #2563eb;
 }
 
 @layer base {

@@ -80,18 +80,18 @@ export function RunSentence() {
         </span>{" "}
         produk custom
         <br />
-        <span className="text-white/45">dengan satu pesan.</span>
+        <span className="text-dim">dengan satu pesan.</span>
       </p>
 
       <div className="lp-run-graph flex flex-wrap items-stretch justify-center gap-4 px-4">
         {STEPS.map((s, i) => (
           <div
             key={s.title}
-            className="run-card relative w-[clamp(180px,21vw,215px)] rounded-[16px] border border-white/[.08] bg-gradient-to-b from-[#1a1a1d] to-[#141416] p-4 shadow-[0_24px_60px_-20px_rgba(0,0,0,.8)]"
+            className="run-card relative w-[clamp(180px,21vw,215px)] rounded-[16px] border border-black/[.07] bg-card-grad p-4 shadow-[0_24px_60px_-28px_rgba(16,26,43,.25)]"
           >
             <div className="mb-3 flex items-center justify-between">
               <span className="flex items-center gap-2 text-[13px] font-medium text-fg">
-                <span className="grid size-5 place-items-center rounded-full bg-white/[.08] text-[11px] text-muted">
+                <span className="grid size-5 place-items-center rounded-full bg-black/[.06] text-[11px] text-muted">
                   {i + 1}
                 </span>
                 {s.title}

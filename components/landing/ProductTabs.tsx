@@ -40,7 +40,7 @@ export function ProductTabs() {
         role="tablist"
         aria-label="Kategori produk"
         data-lp="tabs"
-        className="relative z-10 mb-6 flex max-w-full gap-0.5 overflow-x-auto rounded-full border border-white/[.08] bg-[#0b0b0c]/90 p-1"
+        className="relative z-10 mb-6 flex max-w-full gap-0.5 overflow-x-auto rounded-full border border-black/[.08] bg-white/90 p-1 shadow-[0_6px_18px_-10px_rgba(16,26,43,.25)]"
       >
         {CATS.map((c, i) => (
           <button
@@ -50,7 +50,7 @@ export function ProductTabs() {
             aria-selected={i === at}
             onClick={() => setAt(i)}
             className={`relative whitespace-nowrap rounded-full px-4 py-1.5 text-[13px] transition-colors ${
-              i === at ? "bg-white/[.09] text-fg" : "text-muted hover:text-fg"
+              i === at ? "bg-black/[.06] text-fg" : "text-muted hover:text-fg"
             }`}
           >
             {c.label}

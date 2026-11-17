@@ -2,8 +2,8 @@
 .lp-beam {
   background: radial-gradient(
     50% 100% at 50% 0%,
-    rgba(255, 255, 255, 0.16) 0%,
-    rgba(255, 255, 255, 0.05) 45%,
+    rgba(95, 158, 33, 0.14) 0%,
+    rgba(95, 158, 33, 0.04) 45%,
     transparent 100%
   );
   filter: blur(18px);
@@ -12,8 +12,8 @@
 .lp-beam-core {
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.5),
-    rgba(255, 255, 255, 0.06) 70%,
+    rgba(95, 158, 33, 0.28),
+    rgba(95, 158, 33, 0.05) 70%,
     transparent
   );
   filter: blur(6px);
@@ -90,17 +90,17 @@
 .sam-grad {
   background: linear-gradient(
     100deg,
-    #f0abfc 0%,
-    #c084fc 28%,
-    #818cf8 55%,
-    #f472b6 80%,
-    #f0abfc 100%
+    #7cb342 0%,
+    #5f9e21 28%,
+    #3c6a14 55%,
+    #5f9e21 80%,
+    #7cb342 100%
   );
   background-size: 220% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 0 22px rgba(168, 85, 247, 0.22));
+  filter: drop-shadow(0 0 20px rgba(95, 158, 33, 0.22));
   animation: sam-grad-flow 6s linear infinite;
 }
 @keyframes sam-grad-flow {
@@ -215,7 +215,7 @@ h1:hover .sam-grad {
 /* Ask demo: thin scrollbar for long answers */
 .lp-scroll {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
+  scrollbar-color: rgba(16, 26, 43, 0.18) transparent;
 }
 
 .lp-fadein {
@@ -237,10 +237,10 @@ h1:hover .sam-grad {
   background:
     radial-gradient(
       60% 50% at var(--lp-gx, 50%) var(--lp-gy, 0%),
-      rgb(200 205 220 / calc(var(--lp-glow, 0.09) * 1)),
+      rgb(95 158 33 / calc(var(--lp-glow, 0.09) * 1)),
       transparent 70%
     ),
-    var(--lp-bg, #000);
+    var(--lp-bg, #fff);
 }
 
 /* Genie's clouds, in graphite: a perspective grid rising in a haze. Both ends fade, so it never
@@ -267,8 +267,8 @@ h1:hover .sam-grad {
   transform: rotateX(64deg);
   transform-origin: 50% 0%;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+    linear-gradient(rgba(16, 26, 43, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 26, 43, 0.08) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: linear-gradient(to bottom, transparent, #000 35%);
 }
@@ -278,23 +278,23 @@ h1:hover .sam-grad {
   background:
     radial-gradient(
       55% 32% at 50% 52%,
-      rgba(205, 210, 222, 0.13),
+      rgba(95, 158, 33, 0.1),
       transparent 70%
     ),
     radial-gradient(
       30% 22% at 18% 62%,
-      rgba(255, 255, 255, 0.06),
+      rgba(16, 26, 43, 0.04),
       transparent 70%
     ),
     radial-gradient(
       30% 22% at 82% 58%,
-      rgba(255, 255, 255, 0.06),
+      rgba(16, 26, 43, 0.04),
       transparent 70%
     ),
     linear-gradient(
       to bottom,
       transparent 30%,
-      var(--lp-bg, #000) 62%,
+      var(--lp-bg, #fff) 62%,
       transparent
     );
   filter: blur(24px);
@@ -392,9 +392,9 @@ h1:hover .sam-grad {
     margin: auto;
     width: 56px;
     height: 56px;
-    border: 1.5px solid rgba(255, 255, 255, 0.55);
+    border: 1.5px solid rgba(95, 158, 33, 0.55);
     border-radius: 14px;
-    box-shadow: 0 0 40px -6px rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 40px -6px rgba(95, 158, 33, 0.3);
     pointer-events: none;
   }
 
@@ -513,19 +513,19 @@ h1:hover .sam-grad {
   width: 96px;
   height: 96px;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(16, 26, 43, 0.1);
+  color: rgba(16, 26, 43, 0.72);
   background:
     radial-gradient(
       70% 60% at 50% 18%,
-      rgba(255, 255, 255, 0.11),
+      rgba(255, 255, 255, 0.9),
       transparent 70%
     ),
     linear-gradient(180deg, var(--card-top), var(--card-bot));
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.09),
-    inset 0 -12px 26px rgba(0, 0, 0, 0.4),
-    0 22px 44px -14px rgba(0, 0, 0, 0.8);
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -12px 26px rgba(16, 26, 43, 0.05),
+    0 22px 44px -18px rgba(16, 26, 43, 0.22);
   transition:
     border-color 0.3s,
     color 0.3s,
@@ -537,27 +537,17 @@ h1:hover .sam-grad {
   position: absolute;
   inset: -8px;
   border-radius: inherit;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(16, 26, 43, 0.05);
   pointer-events: none;
 }
-.lp-mark > * {
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.22));
-}
-/* the Foundry avatar is black art on an opaque white disc: invert it, then screen it so the
-   (now black) disc drops out and only the white art stays on the graphite */
-.lp-mark > img {
-  filter: invert(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.22));
-  mix-blend-mode: screen;
-}
 a:hover > .lp-mark {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.2);
+  color: #5f9e21;
+  border-color: rgba(95, 158, 33, 0.4);
   transform: translateY(-3px);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.14),
-    inset 0 -12px 26px rgba(0, 0, 0, 0.4),
-    0 0 40px -8px rgba(255, 255, 255, 0.22),
-    0 22px 44px -14px rgba(0, 0, 0, 0.8);
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 0 40px -10px rgba(95, 158, 33, 0.3),
+    0 22px 44px -18px rgba(16, 26, 43, 0.22);
 }
 
 /* How Luora works (seventh pass): the pinned three-column stage only where it fits and motion is

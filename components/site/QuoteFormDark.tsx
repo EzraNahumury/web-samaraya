@@ -6,7 +6,7 @@ import { site, waLink } from "@/lib/site";
 const kategoriOptions = ["Tas & Koper", "Koper", "Konveksi", "Sepatu", "Lainnya"];
 
 const field =
-  "w-full rounded-xl border border-white/[.1] bg-field px-4 py-3 text-[15px] text-fg placeholder:text-dim transition-colors focus:border-green/60 focus:outline-none focus:ring-2 focus:ring-green/25";
+  "w-full rounded-xl border border-black/[.14] bg-field px-4 py-3 text-[15px] text-fg placeholder:text-dim transition-colors focus:border-green/70 focus:outline-none focus:ring-2 focus:ring-green/20";
 const label = "mb-2 block text-[13px] font-medium text-body";
 
 /**
@@ -86,7 +86,7 @@ export function QuoteFormDark() {
             className={`${field} select-caret pr-10`}
           >
             {kategoriOptions.map((k) => (
-              <option key={k} value={k} className="bg-[#1a1a1d] text-fg">
+              <option key={k} value={k} className="bg-white text-fg">
                 {k}
               </option>
             ))}
@@ -130,7 +130,7 @@ export function QuoteFormDark() {
 
       <button
         type="submit"
-        className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-green px-7 text-[15px] font-semibold text-[#07130a] transition-[filter] hover:brightness-110 sm:w-auto"
+        className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-green px-7 text-[15px] font-semibold text-white transition-[filter] hover:brightness-110 sm:w-auto"
       >
         Kirim via WhatsApp
       </button>

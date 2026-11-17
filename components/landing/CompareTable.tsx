@@ -169,7 +169,7 @@ export function CompareWorlds() {
           <span data-rise>Reseller jadi perantara.</span>
         </span>
         <span className="lp-cmp-line">
-          <span data-rise className="text-white/40">
+          <span data-rise className="text-dim">
             Samaraya yang memproduksi.
           </span>
         </span>
@@ -179,7 +179,7 @@ export function CompareWorlds() {
           Cara reseller
           <span
             aria-hidden="true"
-            className="h-4 w-0.5 rounded-full bg-white shadow-[0_0_12px_2px_rgba(255,255,255,.35)]"
+            className="h-4 w-0.5 rounded-full bg-green shadow-[0_0_12px_2px_rgba(95,158,33,.4)]"
           />
           <span className="text-fg">Cara Samaraya</span>
         </p>
@@ -251,7 +251,7 @@ function Mark({ on }: { on: boolean }) {
 function Read({ chip, title, body }: { chip: string; title: string; body: string }) {
   return (
     <div className="flex h-full flex-col justify-center">
-      <p className="mb-3 inline-flex w-fit items-center gap-2 rounded-full border border-white/[.08] bg-white/[.04] px-3 py-1 text-[12px] text-muted">
+      <p className="mb-3 inline-flex w-fit items-center gap-2 rounded-full border border-black/[.08] bg-black/[.03] px-3 py-1 text-[12px] text-muted">
         {chip}
       </p>
       <h3 className="font-medium text-[22px] text-fg lg:text-[26px]">{title}</h3>
@@ -267,7 +267,7 @@ function World({ raw, children }: { raw: string[]; children: ReactNode }) {
       <div data-raw aria-hidden="true" className="lp-cmp-raw">
         {raw.map((l, j) => (
           // biome-ignore lint/suspicious/noArrayIndexKey: static lines, blanks repeat
-          <span key={j} className={j === 0 ? "text-white/60" : undefined}>
+          <span key={j} className={j === 0 ? "text-muted" : undefined}>
             {l || " "}
           </span>
         ))}

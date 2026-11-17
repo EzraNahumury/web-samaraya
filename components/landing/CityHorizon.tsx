@@ -136,11 +136,11 @@ export function CityHorizon() {
       <path fill="url(#lp-ground)" d={NEAR_D} />
       <g strokeWidth="1">
         {ROOFS.map(([a, d]) => (
-          <path key={a} d={d} stroke={`rgba(255,255,255,${a})`} />
+          <path key={a} d={d} stroke={`rgba(16,26,43,${a})`} />
         ))}
-        <path d={MASTS} stroke="rgba(255,255,255,.35)" />
+        <path d={MASTS} stroke="rgba(16,26,43,.3)" />
       </g>
-      <g fill="#fff">
+      <g fill="#141c26">
         {LIT.map(([a, d]) => (
           <path key={a} d={d} opacity={a} />
         ))}
@@ -150,18 +150,18 @@ export function CityHorizon() {
           <g key={`k${m.x}`}>
             <path
               d={`M${m.x} ${m.y + 6}V${m.y + 26}`}
-              stroke="rgba(255,255,255,.35)"
+              stroke="rgba(16,26,43,.3)"
             />
             <rect
               x={m.x - 5}
               y={m.y - 5}
               width="10"
               height="10"
-              fill="#000"
-              stroke="#fff"
+              fill="#ffffff"
+              stroke="#141c26"
               strokeWidth="1"
             />
-            <rect x={m.x - 2} y={m.y - 2} width="4" height="4" fill="#fff" />
+            <rect x={m.x - 2} y={m.y - 2} width="4" height="4" fill="#5f9e21" />
           </g>
         ))}
       </g>

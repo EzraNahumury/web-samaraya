@@ -73,11 +73,11 @@ const STEPS: Step[] = [
 function Panel({ s, on }: { s: Step; on: boolean }) {
   return (
     <div
-      className={`absolute inset-0 flex flex-col justify-center rounded-[20px] border border-white/[.08] bg-gradient-to-b from-[#161618] to-[#101012] p-7 shadow-[0_30px_80px_-24px_rgba(0,0,0,.9)] transition-all duration-500 md:p-9 ${
+      className={`absolute inset-0 flex flex-col justify-center rounded-[20px] border border-black/[.07] bg-card-grad p-7 shadow-[0_30px_80px_-30px_rgba(16,26,43,.22)] transition-all duration-500 md:p-9 ${
         on ? "opacity-100 translate-y-0" : "pointer-events-none translate-y-3 opacity-0"
       }`}
     >
-      <span className="grid size-14 place-items-center rounded-2xl bg-white/[.06] text-fg shadow-[inset_0_1px_0_rgba(255,255,255,.08)]">
+      <span className="grid size-14 place-items-center rounded-2xl bg-black/[.05] text-fg shadow-[inset_0_1px_0_rgba(255,255,255,.7)]">
         {s.icon}
       </span>
       <h3 className="mt-6 font-medium text-[clamp(22px,2.4vw,30px)] text-fg">{s.title}</h3>
@@ -95,9 +95,9 @@ function Panel({ s, on }: { s: Step; on: boolean }) {
         ))}
       </ul>
       <div className="mt-7 flex items-center gap-2 text-[12px]">
-        <span className="rounded-full border border-white/10 bg-white/[.03] px-3 py-1 text-muted">{s.io[0]}</span>
+        <span className="rounded-full border border-black/10 bg-black/[.03] px-3 py-1 text-muted">{s.io[0]}</span>
         <span aria-hidden className="text-dim">→</span>
-        <span className="rounded-full border border-white/10 bg-white/[.03] px-3 py-1 text-fg">{s.io[1]}</span>
+        <span className="rounded-full border border-black/10 bg-black/[.03] px-3 py-1 text-fg">{s.io[1]}</span>
       </div>
     </div>
   );
@@ -107,21 +107,21 @@ function Left({ active }: { active: number }) {
   const s = STEPS[active];
   return (
     <div>
-      <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/[.08] bg-white/[.04] px-3 py-1 text-[12px] text-muted">
+      <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-black/[.08] bg-black/[.03] px-3 py-1 text-[12px] text-muted">
         <span className="size-1.5 rounded-full bg-[var(--lp-green,#4ade80)]" />
         Alur Pemesanan
       </p>
       <h2 className="font-medium text-[clamp(30px,4vw,50px)] text-fg leading-[1.04] tracking-[-0.03em]">
         Lima langkah,
         <br />
-        <span className="text-white/45">satu produsen.</span>
+        <span className="text-dim">satu produsen.</span>
       </h2>
       <div className="mt-8 flex items-end gap-2">
         <span
           key={s.n}
           className="lp-how-num font-medium text-[clamp(70px,9vw,128px)] leading-[0.8]"
           style={{
-            background: "linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.06) 92%)",
+            background: "linear-gradient(180deg, rgba(20,28,38,.95), rgba(20,28,38,.5) 92%)",
             WebkitBackgroundClip: "text",
             backgroundClip: "text",
             color: "transparent",
@@ -139,7 +139,7 @@ function Left({ active }: { active: number }) {
           <div key={st.n} className="flex items-center">
             <span
               className={`grid size-9 place-items-center rounded-full border text-[13px] transition-colors ${
-                i <= active ? "border-white/40 bg-white/[.1] text-fg" : "border-white/15 text-dim"
+                i <= active ? "border-green/50 bg-green/10 text-fg" : "border-black/15 text-dim"
               }`}
             >
               {i + 1}
@@ -205,17 +205,17 @@ export function Features() {
       {/* daftar statis (mobile / reduced) */}
       <div className="shell block space-y-14 py-24 motion-safe:md:hidden">
         <div>
-          <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/[.08] bg-white/[.04] px-3 py-1 text-[12px] text-muted">
+          <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-black/[.08] bg-black/[.03] px-3 py-1 text-[12px] text-muted">
             <span className="size-1.5 rounded-full bg-[var(--lp-green,#4ade80)]" />
             Alur Pemesanan
           </p>
           <h2 className="font-medium text-[clamp(30px,8vw,44px)] text-fg leading-[1.04] tracking-[-0.03em]">
-            Lima langkah, <span className="text-white/45">satu produsen.</span>
+            Lima langkah, <span className="text-dim">satu produsen.</span>
           </h2>
         </div>
         {STEPS.map((s) => (
           <div key={s.n} className="grid gap-5 sm:grid-cols-[auto_1fr] sm:gap-8">
-            <span className="font-medium text-[44px] text-white/30 leading-none">{s.n}</span>
+            <span className="font-medium text-[44px] text-dim leading-none">{s.n}</span>
             <div className="relative h-[440px]">
               <Panel s={s} on />
             </div>

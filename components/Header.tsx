@@ -38,7 +38,7 @@ export function Header() {
     <header
       className={`sticky top-0 z-50 transition-colors duration-300 ${
         scrolled
-          ? "border-b border-white/10 bg-black/80 backdrop-blur-md"
+          ? "border-b border-black/[.08] bg-white/85 backdrop-blur-md"
           : "border-b border-transparent bg-transparent"
       }`}
     >
@@ -60,7 +60,7 @@ export function Header() {
         </Link>
 
         {/* pill nav (desktop) */}
-        <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-0.5 rounded-full border border-white/[.08] bg-gradient-to-b from-white/[.07] to-white/[.02] p-1 shadow-[inset_0_1px_0_rgba(255,255,255,.08),0_10px_30px_rgba(0,0,0,.45)] lg:flex">
+        <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-0.5 rounded-full border border-black/[.08] bg-gradient-to-b from-black/[.035] to-black/[.01] p-1 shadow-[inset_0_1px_0_rgba(255,255,255,.6),0_10px_30px_rgba(16,26,43,.08)] lg:flex">
           {mainNav.map((item) => {
             const active = isActive(item.href);
             return (
@@ -70,7 +70,7 @@ export function Header() {
                   aria-current={active ? "page" : undefined}
                   className={`block whitespace-nowrap rounded-full px-3.5 py-1.5 text-[13px] transition-colors ${
                     active
-                      ? "bg-white/[.1] text-[var(--fg)] shadow-[inset_0_1px_0_rgba(255,255,255,.1)]"
+                      ? "bg-white text-[var(--fg)] shadow-[0_1px_3px_rgba(16,26,43,.1)]"
                       : "text-[var(--muted)] hover:text-[var(--fg)]"
                   }`}
                 >
@@ -86,7 +86,7 @@ export function Header() {
             href={waLink(waMessage())}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden h-10 items-center gap-2 rounded-full bg-[var(--lp-green,#4ade80)] px-5 text-[0.9rem] font-semibold text-[#07130a] transition-transform hover:-translate-y-0.5 sm:inline-flex"
+            className="hidden h-10 items-center gap-2 rounded-full bg-green px-5 text-[0.9rem] font-semibold text-white transition-transform hover:-translate-y-0.5 sm:inline-flex"
           >
             <WhatsappIcon className="h-[1.1rem] w-[1.1rem]" />
             Konsultasi
@@ -97,7 +97,7 @@ export function Header() {
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Tutup menu" : "Buka menu"}
             aria-expanded={open}
-            className="relative flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white lg:hidden"
+            className="relative flex h-11 w-11 items-center justify-center rounded-full border border-black/15 text-fg lg:hidden"
           >
             <span className="sr-only">Menu</span>
             <span className="flex flex-col items-center justify-center gap-[5px]">
@@ -111,7 +111,7 @@ export function Header() {
 
       {/* overlay mobile */}
       <div
-        className={`fixed inset-0 top-[72px] z-40 origin-top bg-black transition-all duration-300 lg:hidden ${
+        className={`fixed inset-0 top-[72px] z-40 origin-top bg-white transition-all duration-300 lg:hidden ${
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
@@ -121,7 +121,7 @@ export function Header() {
               key={item.href}
               href={item.href}
               className={`font-display text-3xl font-medium tracking-tight transition-colors ${
-                isActive(item.href) ? "text-[var(--lp-green-soft,#9bd36a)]" : "text-white"
+                isActive(item.href) ? "text-green" : "text-fg"
               }`}
               style={{
                 transitionDelay: open ? `${i * 40 + 60}ms` : "0ms",
@@ -129,9 +129,9 @@ export function Header() {
                 opacity: open ? 1 : 0,
               }}
             >
-              <span className="flex items-center justify-between border-b border-white/10 py-3.5">
+              <span className="flex items-center justify-between border-b border-black/10 py-3.5">
                 {item.label}
-                <span aria-hidden className="text-[var(--lp-green-soft,#9bd36a)]">↗</span>
+                <span aria-hidden className="text-green">↗</span>
               </span>
             </Link>
           ))}
@@ -139,7 +139,7 @@ export function Header() {
             href={waLink(waMessage())}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex h-13 items-center justify-center gap-2 rounded-full bg-[var(--lp-green,#4ade80)] px-6 text-base font-semibold text-[#07130a]"
+            className="mt-6 inline-flex h-13 items-center justify-center gap-2 rounded-full bg-green px-6 text-base font-semibold text-white"
           >
             <WhatsappIcon className="h-5 w-5" />
             Konsultasi via WhatsApp
